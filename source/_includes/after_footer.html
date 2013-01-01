@@ -1,0 +1,7 @@
+{% include disqus.html %}
+{% unless site.respectfully_social %}
+  {% include facebook_like.html %}
+  {% include google_plus_one.html %}
+  {% include twitter_sharing.html %}
+{% endunless %}
+{% include custom/after_footer.html %}

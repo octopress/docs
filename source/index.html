@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="blog-index">
+  {% for post in paginator.posts %}
+    {% include post/variables.html %}
+    <article {% if linklog %}class="linklog"{% endif %}>
+      {% include article.html %}
+    </article>
+  {% endfor %}
+  <div class="pagination">
+    {% if paginator.next_page %}
+      <a class="prev" href="{{paginator.next_page}}">&larr; Older</a>
+    {% endif %}
+    <a href="/archives">Blog Archives</a>
+    {% if paginator.previous_page %}
+    <a class="next" href="{{paginator.previous_page}}">Newer &rarr;</a>
+    {% endif %}
+  </div>
+</div>
+{% unless page.sidebar == false or site.default_sidebar == false %}
+<aside class="sidebar">
+  {% if page.sidebar == nil or page.sidebar == 'collapse' %}
+    {% include_sidebar site.blog_index_sidebar %}
+  {% else %}
+    {% include_sidebar %}
+  {% endif %}
+</aside>
+{% endunless %}
