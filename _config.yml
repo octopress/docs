@@ -37,7 +37,7 @@ category_dir: blog/categories
 category_title_prefix: "Category: "
 include:
   - .htaccess
-markdown: rdiscount
+markdown: redcarpet
 pygments: false # Jekyll's default Python Pygments have been replaced by pygments.rb. Set to true to use Albino + Pythong Pygments
 
 paginate: 10          # Posts per page on the blog index
