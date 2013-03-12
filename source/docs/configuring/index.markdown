@@ -76,7 +76,7 @@ If you want to publish your site to a subdirectory, [(see Deploying Octopress to
 These third party integrations are already set up for you. Simply fill in the configurations and they'll be added to your site.
 
 - **Github** - *List your github repositories in the sidebar*
-- **Twitter** - *Setup a sidebar twitter feed, follow button, and tweet button (for sharing posts and pages).*
+- **Twitter** - *Add a button for sharing of posts and pages on Twitter*
 - **Google Plus One** - *Setup sharing for posts and pages on Google's plus one network.*
 - **Pinboard** - *Share your recent Pinboard bookmarks in the sidebar.*
 - **Delicious** - *Share your recent Delicious bookmarks in the sidebar.*
