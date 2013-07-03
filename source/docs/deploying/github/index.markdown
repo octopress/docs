@@ -1,4 +1,4 @@
----
+  ---
 layout: page
 title: "Deploying to Github Pages"
 date: 2011-09-10 17:52
@@ -8,20 +8,22 @@ footer: false
 
 ## With Github User/Organization pages
 
-Use this if you want to host a blog from `http://username.github.com` (though you can also use [custom domains](#custom_domains)).
+Use this if you want to host a blog from `http://username.github.io` (though you can also use [custom domains](#custom_domains)). In the past, Github has used `http://username.github.com` for these domains, but is shifting to the 'io' extension instead for Pages.
 
-Create a [new Github repository](https://github.com/repositories/new) and name the repository with the format `username.github.com`, where `username` is your GitHub user name or organization name.
+Create a [new Github repository](https://github.com/repositories/new) and name the repository with the format `username.github.io`, where `username` is your GitHub user name or organization name.
 
-Github Pages for users and organizations uses the master branch like the public directory on a web server, serving up the files at your Pages url `http://username.github.com`.
+Github Pages for users and organizations uses the master branch like the public directory on a web server, serving up the files at your Pages url `http://username.github.io`.
 As a result, you'll want to work on the source for your blog in the source branch and commit *the generated content* to the master branch. Octopress has a configuration task that helps you set all this up.
 
 ``` sh
 rake setup_github_pages
 ```
 
+The rake task will ask you for a URL of the Github repo. Copy the SSH URL from your newly created repository like: `git@github.com:username/username.github.io.git` and paste it in as a response.
+
 This will:
 
-1. Ask you for your Github Pages repository url.
+1. Store your Github Pages repository url.
 2. Rename the remote pointing to imathis/octopress from 'origin' to 'octopress'
 3. Add your Github Pages repository as the default origin remote.
 4. Switch the active branch from master to source.
@@ -49,10 +51,12 @@ git push origin source
 **Note:** With new repositories, Github sets the default branch based on the branch you push first, and it looks there for the generated site content.
 If you're having trouble getting Github to publish your site, go to the admin panel for your repository and make sure that the master branch is the default branch.
 
+To read more on creating your first blog post, read [Blogging Basics](http://octopress.org/docs/blogging/)
+
 ## With Github Project pages (gh-pages)
 
 Github's Project Pages service allows you to host a site for your existing open source project.
-Github will look for a `gh-pages` branch in your project's repository and make the contents available at url like `http://username.github.com/project`.
+Github will look for a `gh-pages` branch in your project's repository and make the contents available at url like `http://username.github.io/project`.
 
 Here's now you can set up Octopress site to publish to your projects gh-pages repository:
 
@@ -100,7 +104,7 @@ echo 'www.your-domain.com' >> source/CNAME
 
 Next, you’ll need to visit your domain registrar or DNS host and add a record for your domain name.
 
-* For a sub-domain like `www.example.com` you would simply create a CNAME record pointing at `charlie.github.com.`.
+* For a sub-domain like `www.example.com` you would simply create a CNAME record pointing at `charlie.github.io.`.
 * If you are using a top-level domain like `example.com`, you must use an A record pointing to `204.232.175.78`.
 
 **Do not use a CNAME record with a top-level domain!** It can have adverse side effects on other services like email.
