@@ -1,4 +1,4 @@
-  ---
+---
 layout: page
 title: "Deploying to Github Pages"
 date: 2011-09-10 17:52
