@@ -19,16 +19,16 @@ As a result, you'll want to work on the source for your blog in the source branc
 rake setup_github_pages
 ```
 
-The rake task will ask you for a URL of the Github repo. Copy the SSH URL from your newly created repository like: `git@github.com:username/username.github.io.git` and paste it in as a response.
+The rake task will ask you for a URL of the Github repo. Copy the SSH or HTTPS URL from your newly created repository (e.g. `git@github.com:username/username.github.io.git`) and paste it in as a response.
 
 This will:
 
-1. Store your Github Pages repository url.
+1. Ask for and store your Github Pages repository url.
 2. Rename the remote pointing to imathis/octopress from 'origin' to 'octopress'
 3. Add your Github Pages repository as the default origin remote.
 4. Switch the active branch from master to source.
 5. Configure your blog's url according to your repository.
-6. Setup a master branch in the _deploy directory for deployment.
+6. Setup a master branch in the `_deploy` directory for deployment.
 
 Next run:
 
@@ -51,7 +51,7 @@ git push origin source
 **Note:** With new repositories, Github sets the default branch based on the branch you push first, and it looks there for the generated site content.
 If you're having trouble getting Github to publish your site, go to the admin panel for your repository and make sure that the master branch is the default branch.
 
-To read more on creating your first blog post, read [Blogging Basics](http://octopress.org/docs/blogging/)
+To read more on creating your first blog post, read [Blogging Basics](/docs/blogging/)
 
 ## With Github Project pages (gh-pages)
 
