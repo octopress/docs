@@ -294,6 +294,7 @@ multitask :push do
     cd "#{deploy_dir}" do
       system "git pull origin #{deploy_branch}"
     end
+    source_repo = "https://github.com/octopress/docs"
     latest_revision = `git log --format='%H' -1`
     puts "\n## copying #{public_dir} to #{deploy_dir}"
     cp_r "#{public_dir}/.", deploy_dir
@@ -301,7 +302,7 @@ multitask :push do
       File.new(".nojekyll", "w").close
       system "git add ."
       system "git add -u"
-      message = "Site updated to #{latest_revision} of source (#{Time.now.utc})"
+      message = "Site updated on #{Time.now.utc}\n\nCorresponds to #{source_repo}/commit/#{latest_revision}"
       puts "\n## Commiting: #{message}"
       system "git commit -m \"#{message}\""
       puts "\n## Pushing generated #{deploy_dir} website"
