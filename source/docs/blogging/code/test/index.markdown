@@ -33,7 +33,7 @@ sidebar: false
 </body></html>
 ```
 
-{% gist 2219214 lang:rb mark:6-8 %}
+{% gist 2219214 %}
 
 {% codeblock Testing PHP (syntax_test.php) lang:php %}
 <?php
