@@ -41,8 +41,11 @@ Next install Ruby 1.9.3 and you'll be all set.
 
 ```sh
 rbenv install 1.9.3-p0
+rbenv local 1.9.3-p0
 rbenv rehash
 ```
+
+**Note:** `rbenv local 1.9.3-p0` ensures that your Octopress installation is using Ruby 1.9.3-p0 without modifying your environment in any other directory. If you wish to use 1.9.3-p0 everywhere, run `rbenv global 1.9.3-p0` instead.
 
 Run `ruby --version` to be sure you're using Ruby 1.9.3. If you're having trouble, [seek help here](https://github.com/sstephenson/rbenv/issues)
 
