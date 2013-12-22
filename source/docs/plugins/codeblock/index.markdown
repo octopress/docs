@@ -76,8 +76,6 @@ var arr2 = new Array(element0, element1, ..., elementN);
     var arr2 = new Array(element0, element1, ..., elementN);
     {% endcodeblock %}{% endraw %}
 
-**5.** This example uses a custom starting line number and marks lines 52 and 54 through 55.
-
 ### Other ways to embed code snippets
 
 You might also like to [use back tick code blocks](/docs/plugins/backtick-codeblock), [embed code from a file](/docs/plugins/include-code), or [embed GitHub gists](/docs/plugins/gist-tag).
