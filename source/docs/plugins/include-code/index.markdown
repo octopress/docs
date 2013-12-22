@@ -13,7 +13,7 @@ use the following tag to embed it in a post.
 
 ## Syntax
 
-    {{ "{% include_code [title] [lang:language] path/to/file [start:#] [end:#] [range:#-#] [mark:#,#-#] [linenos:false]" }} %}
+    {{ "{% include_code [title] [lang:language] path/to/file" }} %}
 
 ### Basic options
 
@@ -42,33 +42,6 @@ use the following tag to embed it in a post.
     {{ "{% ruby/test.rb include_code Add to_fraction for floats" }} %}
 
 This includes a file from `source/downloads/code/ruby/test.rb`.
-
-
-### Including part of a file
-
-**3.** Embed a file starting from a specific line.
-
-{% include_code test.js start:10 %}
-
-*The source:* 
-
-    {% raw %}{% include_code test.js start:10 %}{% endraw %} 
-
-**4.** Embed a file ending at a specific line.
-
-{% include_code test.js end:10 %}
-
-*The source:*
-
-    {% raw %}{% include_code test.js end:10 %}{% endraw %}
-
-**5.** Display only the lines in a specific range.
-
-{% include_code test.js range:5-16 %}
-
-*The source:*
-
-    {% raw %}{% include_code test.js range:5-16 %}{% endraw %}
 
 ### Other ways to embed code snippets
 
