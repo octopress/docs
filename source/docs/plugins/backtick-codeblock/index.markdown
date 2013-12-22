@@ -11,7 +11,7 @@ Simply start a line with three back ticks followed by a space and the language y
 
 ## Syntax
 
-    ``` [language] [title] [url] [link text] [linenos:false] [start:#] [mark:#,#-#]
+    ``` [language] [title] [url] [link text]
     code snippet
     ```
 ### Basic options
@@ -55,26 +55,6 @@ end
         ('1' * self) !~ /^1?$|^(11+?)\1+$/
       end
     end
-    ```
-
-**3.** This example uses a custom starting line number and marks lines 52 and 54 through 55.
-
-``` coffeescript Coffeescript Tricks start:51 mark:52,54-55
-# Given an alphabet:
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
-# Iterate over part of the alphabet:
-console.log letter for letter in alphabet[4..8]
-```
-
-*The source:*
-
-    ``` coffeescript Coffeescript Tricks start:51 mark:52,54-55
-    # Given an alphabet:
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
-    # Iterate over part of the alphabet:
-    console.log letter for letter in alphabet[4..8]
     ```
 
 ### Other ways to embed code snippets
