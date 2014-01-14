@@ -24,6 +24,8 @@ rake new_post["title"]
 `new_post` expects a naturally written title and strips out undesirable url characters when creating the filename.
 The default file extension for new posts is `markdown` but you can configure that in the `Rakefile`.
 
+Note: some command interpreters, e.g. zhs, have a special meating of a `[` and `]` so you have to escape them or temporary switch to bash.
+
 #### Example
 
 ``` sh
