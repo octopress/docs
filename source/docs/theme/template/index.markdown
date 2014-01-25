@@ -61,7 +61,10 @@ If you want to add a section to your sidebar, create a new file in `source/_incl
 Since many people probably want to add an About Me section, there's already an `about.html` file in there waiting to be added. Here's a look.
 
 {% codeblock About Me (source/_includes/custom/asides/about.html) %}
-{% render_partial ../.themes/classic/source/_includes/custom/asides/about.html raw %}
+<section>
+    <h1>About Me</h1>
+    <p>A little something about me.</p>
+</section>
 {% endcodeblock %}
 
 Whenever you add a section to the sidebar, follow this pattern, with a `<section>` block and an `<h1>` for a title. To add it to the sidebar, edit the `_config.yml` and add it to the list of asides.
