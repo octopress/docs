@@ -39,7 +39,7 @@ use the following tag to embed it in a post.
 
 *The source:*
 
-    {{ "{% ruby/test.rb include_code Add to_fraction for floats" }} %}
+    {{ "{% include_code ruby/test.rb  Add to_fraction for floats" }} %}
 
 This includes a file from `source/downloads/code/ruby/test.rb`.
 
