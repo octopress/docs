@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<h4>{{ page.plugin.name }}</h4>
+<ul>
+{% for page in page.doc_pages %}
+<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{% endfor %}
+</ul>
