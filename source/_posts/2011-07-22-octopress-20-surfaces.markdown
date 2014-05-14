@@ -47,6 +47,6 @@ For more plugins check out the [plugin list](/docs/plugins)
 
 Octopress is really easy to set up and deploy, [start here](/docs/setup).
 
-For now that's it. Check out the [docs](/docs), [kick the tires](http://github.com/imathis/octopress), post [issues](http://github.com/imathis/octopress/issues) send me [support requests](http://convore.com/octopress/support) and tell all your friends.
+For now that's it. Check out the [docs](/docs), [kick the tires](http://github.com/imathis/octopress), post [issues](http://github.com/imathis/octopress/issues), send me [support requests](http://convore.com/octopress/support), and tell all your friends.
 
 Oh, and if you like, follow [@octopress](http://twitter.com/octopress) and [@imathis](http://twitter.com/imathis) on Twitter.
