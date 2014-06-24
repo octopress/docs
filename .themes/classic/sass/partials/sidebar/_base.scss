@@ -1,7 +1,7 @@
 .side-shadow-border {
   @include box-shadow(lighten($sidebar-bg, 5) 0 1px);
 }
-.sidebar {
+aside.sidebar {
   overflow: hidden;
   color: $sidebar-color;
   text-shadow: lighten($sidebar-bg, 8) 0 1px;
@@ -44,7 +44,7 @@
     color: inherit;
     @include transition(color .5s);
   }
-  &:hover p a, &:hover li a {
+  &:hover a {
     color: $sidebar-link-color;
     &:hover { color: $sidebar-link-color-hover; }
   }

@@ -48,41 +48,45 @@ module Jekyll
 
   class CodeBlock < Liquid::Block
     include HighlightCode
-    TitleUrlLinkText = /(\S[\S\s]*)\s+(https?:\/\/\S+|\/\S+)\s*(.+)?/i
-    Title = /(\S[\S\s]*)/
+    include TemplateWrapper
+    CaptionUrlTitle = /(\S[\S\s]*)\s+(https?:\/\/\S+|\/\S+)\s*(.+)?/i
+    Caption = /(\S[\S\s]*)/
     def initialize(tag_name, markup, tokens)
-      opts     = parse_markup(markup)
-      @options = {
-        lang:      opts[:lang],
-        title:     opts[:title],
-        lineos:    opts[:lineos],
-        marks:     opts[:marks],
-        url:       opts[:url],
-        link_text: opts[:link_text] || 'link',
-        start:     opts[:start]     || 1,
-      }
-      markup     = clean_markup(markup)
-
-      if markup =~ TitleUrlLinkText
-        @options[:title]     ||= $1
-        @options[:url]       ||= $2
-        @options[:link_text] ||= $3
-      elsif markup =~ Title
-        @options[:title]     ||= $1
+      @title = nil
+      @caption = nil
+      @filetype = nil
+      @highlight = true
+      if markup =~ /\s*lang:(\S+)/i
+        @filetype = $1
+        markup = markup.sub(/\s*lang:(\S+)/i,'')
       end
-      # grab lang from filename in title
-      if @options[:title] =~ /\S[\S\s]*\w+\.(\w+)/ && @options[:lang].nil?
-        @options[:lang]      ||= $1
+      if markup =~ CaptionUrlTitle
+        @file = $1
+        @caption = "<figcaption><span>#{$1}</span><a href='#{$2}'>#{$3 || 'link'}</a></figcaption>"
+      elsif markup =~ Caption
+        @file = $1
+        @caption = "<figcaption><span>#{$1}</span></figcaption>\n"
+      end
+      if @file =~ /\S[\S\s]*\w+\.(\w+)/ && @filetype.nil?
+        @filetype = $1
       end
       super
     end
 
     def render(context)
-      code = super.strip
-      code = highlight(code, @options)
-      code = context['pygments_prefix'] + code if context['pygments_prefix']
-      code = code + context['pygments_suffix'] if context['pygments_suffix']
-      code
+      output = super
+      code = super
+      source = "<figure class='code'>"
+      source += @caption if @caption
+      if @filetype
+        source += "#{highlight(code, @filetype)}</figure>"
+      else
+        source += "#{tableize_code(code.lstrip.rstrip.gsub(/</,'&lt;'))}</figure>"
+      end
+      source = safe_wrap(source)
+      source = context['pygments_prefix'] + source if context['pygments_prefix']
+      source = source + context['pygments_suffix'] if context['pygments_suffix']
+      source
     end
   end
 end

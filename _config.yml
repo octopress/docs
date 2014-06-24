@@ -6,7 +6,7 @@ url: http://octopress.org
 title: Octopress
 subtitle: A blogging framework for hackers.
 author: Brandon Mathis
-simple_search: http://google.com/search
+simple_search: https://www.google.com/search
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -34,23 +34,19 @@ destination: public
 plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
-category_title_prefix: "Category: "
-include:
-  - .htaccess
-markdown: redcarpet
-pygments: false # Jekyll's default Python Pygments have been replaced by pygments.rb. Set to true to use Albino + Pythong Pygments
+markdown: rdiscount
+rdiscount:
+  extensions:
+    - autolink
+    - footnotes
+    - smart
+highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
-pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
+paginate_path: "posts/:num"  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
-excerpt_in_feed: false # Truncate excerpted articles in the atom feed
-permalink_label: "Permalink"
-permalink_label_feed: "&#9875; Permalink"
-linklog_marker: "&rarr;"
-linklog_marker_position: after
-linklog_marker_position_feed: after
-standard_post_marker:
+excerpt_separator: "<!--more-->"
 
 titlecase: true       # Converts page and post titles to titlecase
 
@@ -76,10 +72,6 @@ github_skip_forks: true
 
 # Twitter
 twitter_user: octopress
-twitter_tweet_count: 4
-twitter_show_replies: false
-twitter_follow_button: true
-twitter_show_follower_count: false
 twitter_tweet_button: true
 
 # Google +1

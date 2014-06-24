@@ -1,3 +1,6 @@
+$noise-bg: image-url('noise.png') top left !default;
+$img-border: inline-image('dotted-border.png') !default;
+
 // Main Link Colors
 $link-color: lighten(#165b94, 3) !default;
 $link-color-hover: adjust-color($link-color, $lightness: 10, $saturation: 25) !default;
@@ -33,7 +36,7 @@ $nav-border-right: lighten($nav-bg, 7) !default;
 
 /* Sidebar colors */
 $sidebar-bg: #f2f2f2 !default;
-$sidebar-link-color: $link-color !default;
+$sidebar-link-color: $text-color !default;
 $sidebar-link-color-hover: $link-color-hover !default;
 $sidebar-link-color-active: $link-color-active !default;
 $sidebar-color: change-color(mix($text-color, $sidebar-bg, 80), $hue: hue($sidebar-bg), $saturation: saturation($sidebar-bg)/2) !default;
@@ -41,7 +44,6 @@ $sidebar-border: desaturate(darken($sidebar-bg, 7), 10) !default;
 $sidebar-border-hover: darken($sidebar-bg, 7) !default;
 $sidebar-link-color-subdued: lighten($sidebar-color, 20) !default;
 $sidebar-link-color-subdued-hover: $sidebar-link-color-hover !default;
-$twitter-status-link: lighten($sidebar-link-color-subdued, 15) !default;
 
 $footer-color: #888 !default;
 $footer-bg: #ccc !default;
@@ -56,22 +58,12 @@ $footer-link-color-hover: darken($footer-color, 25) !default;
 $page-border-bottom: darken($footer-bg, 5) !default;
 
 
-// Sprites and images
-
-@import "icon/*.png";/**/
-@include all-icon-sprites($dimensions: true);
-
-$noise-bg: image-url('noise.png') top left !default;
-$img-border: inline-image('dotted-border.png') !default;
-
-
-// Core theme application
+/* Core theme application */
 
 a {
-  color: $link-color;
   @include link-colors($link-color, $hover: $link-color-hover, $focus: $link-color-hover, $visited: $link-color-visited, $active: $link-color-active);
 }
-.sidebar a {
+aside.sidebar a {
   @include link-colors($sidebar-link-color, $hover: $sidebar-link-color-hover, $focus: $sidebar-link-color-hover, $active: $sidebar-link-color-active);
 }
 a {
