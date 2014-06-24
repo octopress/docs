@@ -4,9 +4,11 @@ layout: default
 
 {{ content }}
 
-<h4>{{ page.plugin.name }}</h4>
+<h4>{{ page.plugin.name }} Doc Pages</h4>
+<nav role='navigation'>
 <ul>
-{% for page in page.doc_pages %}
-<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{% for doc in doc_pages[page.plugin.slug].pages %}
+<li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
 {% endfor %}
 </ul>
+</nav>

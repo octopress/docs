@@ -4,6 +4,11 @@ require "jekyll"
 
 module Octopress
   module Docs
+
+    def self.gem_dir(dir='')
+      File.expand_path(File.join(File.dirname(__FILE__), '../', dir))
+    end
+
     class Commands < Octopress::Command
       def self.init_with_program(p)
         p.command(:docs) do |c|
@@ -60,7 +65,7 @@ module Octopress
       end
 
       def self.site_dir
-        File.expand_path('docs', File.join(File.dirname(__FILE__), '../../'))
+        Docs.gem_dir('docs')
       end
 
       def self.require_gems

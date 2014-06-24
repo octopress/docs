@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/stylesheets/all-3501dac163c9d93c6b63d846c646b0f1.css' media='all' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+  <p>If you haven&#39;t created a ruby gem for your plugin, check out <a href="/docs/ink/guides/creating-a-gem/">Creating a Gem</a>.</p>
+
+<p>In this section we&#39;ll create an Octopress Ink plugin. Take a look at <code>lib/baconnaise.rb</code>. You should see
+something like this:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">&quot;baconnaise/version&quot;</span>
+
+<span class="k">module</span> <span class="nn">Baconnaise</span>
+  <span class="c1"># Your code goes here...</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>We&#39;ll require octopress-ink add a configuration method, and register the plugin with Octopress Ink plugin. Here&#39;s what <code>lib/baconnaise.rb</code> after we&#39;ve done that.</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">&quot;baconnaise/version&quot;</span>
+<span class="nb">require</span> <span class="s2">&quot;octopress-ink&quot;</span>
+
+<span class="k">module</span> <span class="nn">Baconnaise</span>
+  <span class="k">class</span> <span class="nc">InkPlugin</span> <span class="o">&lt;</span> <span class="no">Octopress</span><span class="o">::</span><span class="no">Ink</span><span class="o">::</span><span class="no">Plugin</span>
+    <span class="k">def</span> <span class="nf">configuration</span>
+      <span class="p">{</span>
+        <span class="c1"># your configuration goes here.</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Register the plugin with Octopress Ink</span>
+<span class="no">Octopress</span><span class="o">::</span><span class="no">Ink</span><span class="o">.</span><span class="n">register_plugin</span><span class="p">(</span><span class="no">Baconnaise</span><span class="o">::</span><span class="no">InkPlugin</span><span class="p">)</span>
+</code></pre></div>
+<p>Now when Jekyll requires your plugin, it will register with Octopress Ink. The configuration options are as follows:</p>
+
+<table><thead>
+<tr>
+<th align="left">Configuration</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">The display name for your plugin, e.g. &quot;My Plugin&quot;</td>
+</tr>
+<tr>
+<td align="left">assets_path</td>
+<td align="left">Path to your plugin&#39;s assets directory</td>
+</tr>
+<tr>
+<td align="left">slug</td>
+<td align="left">Optional: The slug is how users will reference your plugin, (Default: sluggified name)</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">Optional: &quot;plugin&quot; or &quot;theme&quot; (Default: &quot;plugin&quot;)</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">Optional: Version will be displayed with plugin info</td>
+</tr>
+<tr>
+<td align="left">description</td>
+<td align="left">Optional: Description will be displayed with plugin info</td>
+</tr>
+<tr>
+<td align="left">website</td>
+<td align="left">Optional: Website will be displayed with plugin info</td>
+</tr>
+</tbody></table>
+
+<p>For Baconnaise, our configuration medthod will look like this:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">configuration</span>
+  <span class="p">{</span>
+    <span class="nb">name</span><span class="p">:</span>        <span class="s2">&quot;Baconnaise&quot;</span><span class="p">,</span>
+    <span class="ss">slug</span><span class="p">:</span>        <span class="s2">&quot;baconnaise&quot;</span><span class="p">,</span>
+    <span class="n">assets_path</span><span class="p">:</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;../assets&#39;</span><span class="p">)),</span>
+    <span class="ss">type</span><span class="p">:</span>        <span class="s2">&quot;plugin&quot;</span><span class="p">,</span>
+    <span class="ss">version</span><span class="p">:</span>     <span class="no">Baconnaise</span><span class="o">::</span><span class="no">VERSION</span><span class="p">,</span>
+    <span class="ss">description</span><span class="p">:</span> <span class="s2">&quot;Baconnaise, because mistakes have never been this spreadable.&quot;</span><span class="p">,</span>
+    <span class="ss">website</span><span class="p">:</span>     <span class="s2">&quot;http://baconnaise-craze.info/or/something/&quot;</span>
+  <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<h4>Octopress Ink Doc Pages</h4>
+<nav role='navigation'>
+<ul>
+
+<li><a href="/docs/ink/">Octopress Ink</a></li>
+
+<li><a href="/docs/ink/plugin-reference/">Octopress Ink plugin reference</a></li>
+
+<li><a href="/docs/ink/guides/creating-a-plugin/">Create an Octopress Ink Plugin</a></li>
+
+<li><a href="/docs/ink/guides/creating-a-gem/">Creating a Gem</a></li>
+
+</ul>
+</nav>
+
+  
+  </body>
+</html>
+

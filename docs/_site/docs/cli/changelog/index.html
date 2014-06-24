@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/stylesheets/all-3501dac163c9d93c6b63d846c646b0f1.css' media='all' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+  <p>Octopress is an obsessively designed toolkit for writing and deploying Jekyll blogs. Pretty sweet, huh?</p>
+
+<!--[![Gem Version](https://badge.fury.io/rb/octopress.png)](http://badge.fury.io/rb/octopress)-->
+
+<p><a href="https://travis-ci.org/octopress/octopress"><img src="https://travis-ci.org/octopress/octopress.png?branch=master" alt="Build Status"></a></p>
+
+<h2 id="toc_0">Installation</h2>
+
+<p>Add this line to your application&#39;s Gemfile:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">gem &#39;octopress&#39;, &#39;~&gt; 3.0.0.rc.5&#39;
+</code></pre></div>
+<p>And then execute:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ bundle
+</code></pre></div>
+<p>Or install it yourself as:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ gem install octopress --pre
+</code></pre></div>
+<h2 id="toc_1">Basic Usage</h2>
+
+<p>Here are the commands for Octopress.</p>
+
+<table><thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left"><code>octopress init &lt;PATH&gt;</code></td>
+<td align="left">Adds Octopress scaffolding to your site</td>
+</tr>
+<tr>
+<td align="left"><code>octopress new post &lt;TITLE&gt;</code></td>
+<td align="left">Add a new post to your site</td>
+</tr>
+<tr>
+<td align="left"><code>octopress new page &lt;PATH&gt;</code></td>
+<td align="left">Add a new page to your site</td>
+</tr>
+<tr>
+<td align="left"><code>octopress new draft &lt;TITLE&gt;</code></td>
+<td align="left">Add a new draft post to your site</td>
+</tr>
+<tr>
+<td align="left"><code>octopress publish &lt;PATH&gt;</code></td>
+<td align="left">Publish a draft from _drafts to _posts</td>
+</tr>
+<tr>
+<td align="left"><code>octopress new &lt;PATH&gt;</code></td>
+<td align="left">works just like <code>jekyll new</code></td>
+</tr>
+<tr>
+<td align="left"><code>octopress build</code></td>
+<td align="left">works just like <code>jekyll build</code></td>
+</tr>
+<tr>
+<td align="left"><code>octopress serve</code></td>
+<td align="left">works just like <code>jekyll serve</code></td>
+</tr>
+<tr>
+<td align="left"><code>octopress doctor</code></td>
+<td align="left">works just like <code>jekyll doctor</code></td>
+</tr>
+</tbody></table>
+
+<p>Run <code>octopress [command] --help</code> to learn more about any command and see its options.</p>
+
+<h3 id="toc_2">Deployment</h3>
+
+<p>You can deploy your Octopress or Jeklly blog via git, rsync or Amazon S3. The deployment system ships with the <a href="https://github.com/octopress/deploy">octopress-deploy</a> gem which extends the Octopress CLI with the <code>deploy</code> command.</p>
+
+<h2 id="toc_3">Configuration</h2>
+
+<p>Octopress reads its configurations from <code>_octopress.yml</code>. Here&#39;s what the configuration looks like by default.</p>
+<div class="highlight"><pre><code class="yaml language-yaml" data-lang="yaml"><span class="c1"># Default extension for new posts and pages</span>
+<span class="l-Scalar-Plain">post_ext</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">markdown</span>
+<span class="l-Scalar-Plain">page_ext</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">html</span>
+
+<span class="c1"># Default templates for posts and pages</span>
+<span class="c1"># Found in _templates/</span>
+<span class="l-Scalar-Plain">post_layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">post</span>
+<span class="l-Scalar-Plain">page_layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">page</span>
+
+<span class="c1"># Format titles with titlecase?</span>
+<span class="l-Scalar-Plain">titlecase</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</code></pre></div>
+<h2 id="toc_4">Commands</h2>
+
+<h3 id="toc_5">Init</h3>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nv">$ </span>octopress init &lt;PATH&gt; <span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+<p>This will copy Octopress&#39;s scaffolding into the specified directory. Use the <code>--force</code> option to overwrite existing files. The scaffolding is pretty simple:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">_octopress.yml
+_templates/
+  post
+  page
+</code></pre></div>
+<h3 id="toc_6">New Post</h3>
+
+<p>This automates the creation of a new post.</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nv">$ </span>octopress new post <span class="s2">&quot;My Title&quot;</span>
+</code></pre></div>
+<p>This will create a new file at <code>_posts/YYYY-MM-DD-my-title.markdown</code> with the following YAML front-matter already added.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">layout: post
+title: &quot;My Title&quot;
+date: YYYY-MM-DDTHH:MM:SS-00:00
+</code></pre></div>
+<p>&quot;Ok, great? What else can I do?&quot; Great question! Check out these other options:</p>
+
+<table><thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left"><code>--template PATH</code></td>
+<td align="left">Use a template from <path></td>
+</tr>
+<tr>
+<td align="left"><code>--date DATE</code></td>
+<td align="left">The date for the post. Should be parseable by <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/time/rdoc/Time.html#method-i-parse">Time#parse</a></td>
+</tr>
+<tr>
+<td align="left"><code>--slug SLUG</code></td>
+<td align="left">Slug for the new post.</td>
+</tr>
+<tr>
+<td align="left"><code>--dir DIR</code></td>
+<td align="left">Create post at _posts/DIR/.</td>
+</tr>
+<tr>
+<td align="left"><code>--force</code></td>
+<td align="left">Overwrite exsiting file.</td>
+</tr>
+</tbody></table>
+
+<h3 id="toc_7">New Page</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ octopress new page some-page           # ./some-page.html
+$ octopress new page docs/               # ./docs/index.html
+$ octopress new page about.html          # ./about.html
+</code></pre></div>
+<table><thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left"><code>--template PATH</code></td>
+<td align="left">Use a template from <path></td>
+</tr>
+<tr>
+<td align="left"><code>--title TITLE</code></td>
+<td align="left">The title of the new page</td>
+</tr>
+<tr>
+<td align="left"><code>--date DATE</code></td>
+<td align="left">The date for the page. Should be parseable by <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/time/rdoc/Time.html#method-i-parse">Time#parse</a></td>
+</tr>
+<tr>
+<td align="left"><code>--force</code></td>
+<td align="left">Overwrite exsiting file.</td>
+</tr>
+</tbody></table>
+
+<h3 id="toc_8">New Draft</h3>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nv">$ </span>octopress new draft <span class="s2">&quot;My Title&quot;</span>
+</code></pre></div>
+<p>This will create a new post in your <code>_drafts</code> directory.</p>
+
+<table><thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left"><code>--template PATH</code></td>
+<td align="left">Use a template from <path></td>
+</tr>
+<tr>
+<td align="left"><code>--date DATE</code></td>
+<td align="left">The date for the draft. Should be parseable by <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/time/rdoc/Time.html#method-i-parse">Time#parse</a> (defaults to Time.now)</td>
+</tr>
+<tr>
+<td align="left"><code>--slug SLUG</code></td>
+<td align="left">The slug for the new post.</td>
+</tr>
+<tr>
+<td align="left"><code>--force</code></td>
+<td align="left">Overwrite exsiting file.</td>
+</tr>
+</tbody></table>
+
+<h3 id="toc_9">Publish draft</h3>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nv">$ </span>octopress publish _drafts/some-post.md
+</code></pre></div>
+<p>This will move your draft to the <code>_posts</code> directory and rename the file with the proper date.</p>
+
+<table><thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left"><code>--date DATE</code></td>
+<td align="left">The date for the post. Should be parseable by <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/time/rdoc/Time.html#method-i-parse">Time#parse</a></td>
+</tr>
+<tr>
+<td align="left"><code>--slug SLUG</code></td>
+<td align="left">Change the slug for the new post.</td>
+</tr>
+<tr>
+<td align="left"><code>--dir DIR</code></td>
+<td align="left">Create post at _posts/DIR/.</td>
+</tr>
+<tr>
+<td align="left"><code>--force</code></td>
+<td align="left">Overwrite exsiting file.</td>
+</tr>
+</tbody></table>
+
+<p>When publishing a draft, the new post will use the draft&#39;s date. Pass the option <code>--date now</code> to the publish command to set the new post date from your system clock. As usual, you can pass any compatible date string as well.</p>
+
+<h3 id="toc_10">Templates for Posts and pages</h3>
+
+<p>Octopress post and page templates look like this.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">---
+layout: 
+title: 
+date: 
+---
+</code></pre></div>
+<p>The YAML variables will be replaced with the correct content when you create a page or post. To modify this template create a <code>_templates/post</code> file and change it as you wish. You can add additional YAML front-matter or content, and you can even create multiple templates. Choose a custom template when creating a new post or page like this.</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nv">$ </span>octopress new post --template _templates/linkpost
+</code></pre></div>
+<h2 id="toc_11">Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+
+<h4>Octopress Doc Pages</h4>
+<nav role='navigation'>
+<ul>
+
+<li><a href="/docs/cli/changelog/">Octopress Changelog</a></li>
+
+<li><a href="/docs/cli/changelog/">Octopress</a></li>
+
+</ul>
+</nav>
+
+  
+  </body>
+</html>
+

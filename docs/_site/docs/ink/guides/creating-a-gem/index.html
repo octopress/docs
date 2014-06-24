@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/stylesheets/all-3501dac163c9d93c6b63d846c646b0f1.css' media='all' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+  <p><em>This guide assumes you have already installed Git, and Ruby 1.9.3 or greater.</em></p>
+
+<p>Octopress Ink plugins are distributed as ruby gems so you&#39;ll probably need to create an acconut at <a href="https://rubygems.org/sign_up">RubyGems.org</a> if you haven&#39;t yet. Also, be sure you have <a href="http://bundler.io">bundler</a> installed.</p>
+
+<h3 id="toc_0">How to Create a Gem</h3>
+
+<p>The <a href="http://bundler.io/">bundler gem</a> is a great way to manage gems and provides some terrific utilites for gem creators. Go ahead and
+install it if you haven&#39;t yet.</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">gem install bundler
+</code></pre></div>
+<p>Now we&#39;ll use Bundler to create a gem project for our new plugin.</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">bundle gem baconnaise
+</code></pre></div>
+<p>That&#39;s right, this plugin will be called <code>baconnaise</code>. That command will generate a bunch of files into the new <code>baconnaise</code> directory. Take a peek inside and you&#39;ll see somethig like this:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">lib/
+  baconnaise/
+    version.rb
+  baconnaise.rb
+baconnaise.gemspec
+Gemfile
+LICENSE.txt
+Rakefile
+README.md
+</code></pre></div>
+<p>First, you&#39;ll want to edit your <code>baconnaise.gemspec</code> to be sure the information in that is right. Be sure to change the default description and summary. The gem won&#39;t build if you have a <em>TODO</em> in either of those. Here&#39;s what we&#39;re gonig to go with.</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">spec</span><span class="o">.</span><span class="n">description</span>   <span class="o">=</span> <span class="sx">%q{Baconnaise, because mistakes have never been this spreadable.}</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">summary</span>       <span class="o">=</span> <span class="sx">%q{Baconnaise, because #YOLO.}</span>
+</code></pre></div>
+<p>Next you&#39;ll want to add Octopress Ink as a runtime dependency. Here&#39;s what that looks like.</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">spec</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s1">&#39;octopress-ink&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.0&#39;</span>
+</code></pre></div>
+<h4 id="toc_1">A note on Version Numbering</h4>
+
+<p>By default the <code>bundle gem</code> command starts you off at version <code>0.0.1</code>. If you take a look at <code>lib/baconnaise/version.rb</code> you&#39;ll see this.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">module Baconnaise
+  VERSION = &quot;0.0.1&quot;
+end
+</code></pre></div>
+<p>I&#39;d encourage you to change your version number to <code>1.0.0</code> as soon as you release your plugin for production use. For a sensible guide on version numbers, refer to <a href="http://semver.org/">semver.org</a>.</p>
+
+<hr>
+
+<p>For the next part we&#39;ll take a look at creating an Octopress Ink plugin.</p>
+
+<p><a href="/docs/ink/guides/creating-a-plugin/">Creating a Plugin &rarr;</a></p>
+
+
+<h4>Octopress Ink Doc Pages</h4>
+<nav role='navigation'>
+<ul>
+
+<li><a href="/docs/ink/">Octopress Ink</a></li>
+
+<li><a href="/docs/ink/plugin-reference/">Octopress Ink plugin reference</a></li>
+
+<li><a href="/docs/ink/guides/creating-a-plugin/">Create an Octopress Ink Plugin</a></li>
+
+<li><a href="/docs/ink/guides/creating-a-gem/">Creating a Gem</a></li>
+
+</ul>
+</nav>
+
+  
+  </body>
+</html>
+
