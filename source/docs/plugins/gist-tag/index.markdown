@@ -11,32 +11,25 @@ readers and search engines, while still using GitHub's javascript gist embed cod
 
 #### Syntax
 
-```
-{% gist gist_id [filename] [options] %}
-```
+    {% raw %}{% gist gist_id [filename] [options] %}{% endraw %}
 
 #### Example
 
-```
-{% gist 4321346 %}
-```
+    {% raw %}{% gist 4321346 %}{% endraw %}
 
 {% gist 4321346 %}
 
 If you want syntax highlighting (for a [supported language](http://pygments.org/docs/lexers/)), specify the filename (with extension):
 
 
-```
-{% gist 4321346 gistfile1.diff %}
-```
+    {% raw %}{% gist 4321346 gistfile1.diff %}{% endraw %}
 
 {% gist 4321346 gistfile1.diff %}
 
 If you have a gist with multiple files, you can include files one at a time by adding the name after the gist id.
 
-```
-{% gist 1059334 svg_bullets.rb %}
-{% gist 1059334 usage.scss %}
-```
+    {% raw %}{% gist 1059334 svg_bullets.rb %}
+    {% gist 1059334 usage.scss %}{% endraw %}
 
 This plugin was initially developed by [Brandon Tilly](http://brandontilley.com/2011/01/31/gist-tag-for-jekyll.html) for Jekyll blogs.
+

@@ -13,9 +13,7 @@ use the following tag to embed it in a post.
 
 ## Syntax
 
-```
-{% render_code path/to/file [title] [lang:language] [start:#] [end:#] [range:#-#] [mark:#,#-#] [linenos:false] %}
-```
+    {% raw %}{% render_code path/to/file [title] [lang:language] [start:#] [end:#] [range:#-#] [mark:#,#-#] [linenos:false] %}{% endraw %}
 
 ### Basic options
 
@@ -33,9 +31,7 @@ use the following tag to embed it in a post.
 
 *The source:*
 
-```
-{% render_code test.js %}
-```
+    {% raw %}{% render_code test.js %}{% endraw %}
 
 **2.** Setting a custom caption.
 
@@ -43,9 +39,7 @@ use the following tag to embed it in a post.
 
 *The source:*
 
-```
-{% render_code ruby/test.rb  Add to_fraction for floats %}
-```
+    {% raw %}{% render_code ruby/test.rb  Add to_fraction for floats %}{% endraw %}
 
 This includes a file from `source/downloads/code/ruby/test.rb`.
 
@@ -58,9 +52,7 @@ This includes a file from `source/downloads/code/ruby/test.rb`.
 
 *The source:* 
 
-```
-{% render_code test.js start:10 %}
-```
+    {% raw %}{% render_code test.js start:10 %}{% endraw %}
 
 **4.** Embed a file ending at a specific line.
 
@@ -68,9 +60,7 @@ This includes a file from `source/downloads/code/ruby/test.rb`.
 
 *The source:*
 
-```
-{% render_code test.js end:10 %}
-```
+    {% raw %}{% render_code test.js end:10 %}{% endraw %}
 
 **5.** Display only the lines in a specific range.
 
@@ -78,9 +68,7 @@ This includes a file from `source/downloads/code/ruby/test.rb`.
 
 *The source:*
 
-```
-{% render_code test.js range:5-16 %}
-```
+    {% raw %}{% render_code test.js range:5-16 %}{% endraw %}
 
 ### Other ways to embed code snippets
 

@@ -35,11 +35,9 @@ Awesome code snippet
 
 *The source:*
 
-```
-{% raw %}{% codeblock %}
-Awesome code snippet
-{% endcodeblock %}{% endraw %}
-```
+    {% raw %}{% codeblock %}
+    Awesome code snippet
+    {% endcodeblock %}{% endraw %}
 
 **2.** This example uses syntax highlighting.
 
@@ -49,11 +47,9 @@ Awesome code snippet
 
 *The source:*
 
-```
-{% raw %}{% codeblock lang:objc %}
-[rectangle setX: 10 y: 10 width: 20 height: 20];
-{% endcodeblock %}{% endraw %}
-```
+    {% raw %}{% codeblock lang:objc %}
+    [rectangle setX: 10 y: 10 width: 20 height: 20];
+    {% endcodeblock %}{% endraw %}
 
 **3.** Including a file extension in the title can also trigger highlighting.
 
@@ -63,11 +59,9 @@ puts "Awesome!" unless lame
 
 *The source:*
 
-```
-{% raw %}{% codeblock Time to be Awesome - awesome.rb %}
-puts "Awesome!" unless lame
-{% endcodeblock %}{% endraw %}
-```
+    {% raw %}{% codeblock Time to be Awesome - awesome.rb %}
+    puts "Awesome!" unless lame
+    {% endcodeblock %}{% endraw %}
 
 **4.** Add an optional URL for downloading or linking to a source.
 
@@ -78,12 +72,10 @@ var arr2 = new Array(element0, element1, ..., elementN);
 
 *The source:*
 
-```
-{% raw %}{% codeblock Javascript Array Syntax lang:js http://j.mp/pPUUmW MDN Documentation %}
-var arr1 = new Array(arrayLength);
-var arr2 = new Array(element0, element1, ..., elementN);
-{% endcodeblock %}{% endraw %}
-```
+    {% raw %}{% codeblock Javascript Array Syntax lang:js http://j.mp/pPUUmW MDN Documentation %}
+    var arr1 = new Array(arrayLength);
+    var arr2 = new Array(element0, element1, ..., elementN);
+    {% endcodeblock %}{% endraw %}
 
 **5.** This example uses a custom starting line number and marks lines 52 and 54 through 55.
 
@@ -97,15 +89,13 @@ console.log letter for letter in alphabet[4..8]
 
 *The source:*
 
-```
-{% raw %}{% codeblock Coffeescript Tricks lang:coffeescript start:51 mark:51,54-55 %}
-# Given an alphabet:
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    {% raw %}{% codeblock Coffeescript Tricks lang:coffeescript start:51 mark:51,54-55 %}
+    # Given an alphabet:
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
-# Iterate over part of the alphabet:
-console.log letter for letter in alphabet[4..8]
-{% endcodeblock %}{% endraw %}
-```
+    # Iterate over part of the alphabet:
+    console.log letter for letter in alphabet[4..8]
+    {% endcodeblock %}{% endraw %}
 
 ### Other ways to embed code snippets
 
