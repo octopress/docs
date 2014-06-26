@@ -55,7 +55,9 @@ var arr2 = new Array(element0, element1, ..., elementN);
 ## Gist Tag
 Easily embed gists in your posts or pages.
 
-    {{ "{% gist 996818" }} %}
+```
+{% gist 996818 %}
+```
 
 [Examples & documentation &raquo;](/docs/plugins/gist-tag/)
 

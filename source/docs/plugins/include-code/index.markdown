@@ -13,7 +13,9 @@ use the following tag to embed it in a post.
 
 ## Syntax
 
-    {{ "{% include_code [title] [lang:language] path/to/file [start:#] [end:#] [range:#-#] [mark:#,#-#] [linenos:false]" }} %}
+```
+{% render_code path/to/file [title] [lang:language] [start:#] [end:#] [range:#-#] [mark:#,#-#] [linenos:false] %}
+```
 
 ### Basic options
 
@@ -27,19 +29,23 @@ use the following tag to embed it in a post.
 
 **1.** This code snipped was included from `source/downloads/code/test.js`.
 
-{% include_code test.js %}
+{% render_code test.js %}
 
 *The source:*
 
-    {{ "{% include_code test.js" }} %}
+```
+{% render_code test.js %}
+```
 
 **2.** Setting a custom caption.
 
-{% include_code ruby/test.rb Add to_fraction for floats %}
+{% render_code ruby/test.rb Add to_fraction for floats %}
 
 *The source:*
 
-    {{ "{% include_code ruby/test.rb  Add to_fraction for floats" }} %}
+```
+{% render_code ruby/test.rb  Add to_fraction for floats %}
+```
 
 This includes a file from `source/downloads/code/ruby/test.rb`.
 
@@ -48,27 +54,33 @@ This includes a file from `source/downloads/code/ruby/test.rb`.
 
 **3.** Embed a file starting from a specific line.
 
-{% include_code test.js start:10 %}
+{% render_code test.js start:10 %}
 
 *The source:* 
 
-    {% raw %}{% include_code test.js start:10 %}{% endraw %} 
+```
+{% render_code test.js start:10 %}
+```
 
 **4.** Embed a file ending at a specific line.
 
-{% include_code test.js end:10 %}
+{% render_code test.js end:10 %}
 
 *The source:*
 
-    {% raw %}{% include_code test.js end:10 %}{% endraw %}
+```
+{% render_code test.js end:10 %}
+```
 
 **5.** Display only the lines in a specific range.
 
-{% include_code test.js range:5-16 %}
+{% render_code test.js range:5-16 %}
 
 *The source:*
 
-    {% raw %}{% include_code test.js range:5-16 %}{% endraw %}
+```
+{% render_code test.js range:5-16 %}
+```
 
 ### Other ways to embed code snippets
 

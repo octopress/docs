@@ -6,13 +6,6 @@ $heading-font-family: "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif
 $header-title-font-family: $heading-font-family !default;
 $header-subtitle-font-family: $heading-font-family !default;
 
-$h1: 2.2em !default;
-$h2: 1.5em !default;
-$h3: 1.3em !default;
-$h4:   1em !default;
-$h5:  .9em !default;
-$h6:  .8em !default;
-
 // Fonts
 .heading {
   font-family: $heading-font-family;
@@ -22,7 +15,7 @@ $h6:  .8em !default;
 .mono { font-family: $mono; }
 
 body > header h1 {
-  font-size: $h1;
+  font-size: 2.2em;
   @extend .heading;
   font-family: $header-title-font-family;
   font-weight: normal;
@@ -38,6 +31,15 @@ body {
   color: $text-color;
   @extend .serif;
 }
+h1 {
+  font-size: 2.2em;
+  line-height: 1.2em;
+}
+
+@media only screen and (min-width: 992px) {
+  body { font-size: 1.15em; }
+  h1 { font-size: 2.6em; line-height: 1.2em; }
+}
 
 #{headings()}{
   @extend .heading;
@@ -45,31 +47,23 @@ body {
   margin-bottom: 1em;
   font-weight: bold;
 }
-h1 {
-  font-size: $h1;
-  line-height: 1.2em;
-}
 h2, section h1 {
-  font-size: $h2;
+  font-size: 1.5em;
 }
 h3, section h2, section section h1 {
-  font-size: $h3;
+  font-size: 1.3em;
 }
 h4, section h3, section section h2, section section section h1 {
-  font-size: $h4;
+  font-size: 1em;
 }
 h5, section h4, section section h3 {
-  font-size: $h5;
+  font-size: .9em;
 }
 h6, section h5, section section h4, section section section h3 {
-  font-size: $h6;
+  font-size: .8em;
 }
 
-@media only screen and (min-width: 992px) {
-  body { font-size: 1.15em; }
-}
-
-p, blockquote, ul, ol { margin-bottom: 1.5em; }
+p, article blockquote, ul, ol { margin-bottom: 1.5em; }
 
 ul { list-style-type: disc;
   ul { list-style-type: circle; margin-bottom: 0px;
@@ -80,14 +74,17 @@ ol { list-style-type: decimal;
     ol { list-style-type: lower-roman; margin-bottom: 0px; }}}
 
 ul, ol { &, ul, ol { margin-left: 1.3em; }}
+ul, ol { ul, ol { margin-bottom: 0em; }}
 
 strong { font-weight: bold; }
 
 em { font-style: italic; }
 
-sup, sub { vertical-align: baseline; font-size: 0.8em; position: relative; }
+sup, sub { font-size: 0.75em; position: relative;  display: inline-block; padding: 0 .2em; line-height: .8em;}
 sup { top: -.5em; }
 sub { bottom: -.5em; }
+
+a[rev='footnote']{ font-size: .75em; padding: 0 .3em; line-height: 1; }
 
 q { font-style: italic;
   &:before { content: "\201C"; }
@@ -104,15 +101,13 @@ abbr, acronym { border-bottom: 1px dotted; cursor: help; }
 
 pre, code, tt { @extend .mono; }
 
-sub, sup { line-height: 0; }
-
 hr { margin-bottom: 0.2em; }
 
 small { font-size: .8em; }
 
 big { font-size: 1.2em; }
 
-blockquote {
+article blockquote {
   $bq-margin: 1.2em;
   font-style: italic;
   position: relative;
@@ -166,3 +161,4 @@ blockquote {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+

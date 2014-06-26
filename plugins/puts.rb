@@ -24,12 +24,13 @@ module Jekyll
 
     def render(context)
       # Use a block if label + output is wider than 80 characters
-      if super.length > 69
+      content = super
+      if content.length > 69
         puts "{% puts %}"
-        puts super
+        puts content
         puts "{% endputs %}"
       else
-        puts "{% puts %} #{super}"
+        puts "{% puts %} #{content}"
       end
     end
   end

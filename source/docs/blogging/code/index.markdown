@@ -29,7 +29,7 @@ Check out the [test page](/docs/blogging/code/test) to see the results.
 ## Include Code Snippets
 {% render_partial docs/plugins/include-code/index.markdown %}
 
-## Inline Code Blocks
+## In-line Code Blocks
 {% render_partial docs/plugins/codeblock/index.markdown %}
 
 ## Solarized Highlighting
