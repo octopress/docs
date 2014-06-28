@@ -28,13 +28,13 @@ Simply start a line with three back ticks followed by a space and the language y
 **1.** Here's an example without setting the language.
 
 ```
-$ git clone git@github.com:imathis/octopress.git # fork octopress
+$ git clone git@github.com:imathis/octopress.git
 ```
 
 *The source:*
 
     ```
-    $ git clone git@github.com:imathis/octopress.git # fork octopress
+    $ git clone git@github.com:imathis/octopress.git
     ```
 
 **2.** This example uses syntax highlighting and a code link.
