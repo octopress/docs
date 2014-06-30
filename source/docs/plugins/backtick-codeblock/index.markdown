@@ -21,7 +21,7 @@ Simply start a line with three back ticks followed by a space and the language y
 - `[url]` - Download or reference link for your code.
 - `[Link text]` - Text for the link, defaults to 'link'.
 
-{% render_partial docs/plugins/_partials/options.markdown %}
+{% render docs/plugins/_partials/options.markdown %}
 
 ## Examples
 

@@ -62,7 +62,7 @@ git remote add origin (your repository url)
 git config branch.master.remote origin
 ```
 
-{% render_partial docs/deploying/_self_hosted_git.markdown %}
+{% render docs/deploying/_self_hosted_git.markdown %}
 
 ## Deploying to a subdirectory
 

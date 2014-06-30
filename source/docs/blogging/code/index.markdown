@@ -21,16 +21,16 @@ Octopress makes it way better. Here's how.
 Check out the [test page](/docs/blogging/code/test) to see the results.
 
 ## Backtick Code Blocks
-{% render_partial docs/plugins/backtick-codeblock/index.markdown %}
+{% render docs/plugins/backtick-codeblock/index.markdown %}
 
 ## Gist Embedding
-{% render_partial docs/plugins/gist-tag/index.markdown %}
+{% render docs/plugins/gist-tag/index.markdown %}
 
 ## Include Code Snippets
-{% render_partial docs/plugins/include-code/index.markdown %}
+{% render docs/plugins/include-code/index.markdown %}
 
 ## In-line Code Blocks
-{% render_partial docs/plugins/codeblock/index.markdown %}
+{% render docs/plugins/codeblock/index.markdown %}
 
 ## Solarized Highlighting
 

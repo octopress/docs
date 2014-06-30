@@ -39,7 +39,7 @@ Finally, `source/index.html` can become the landing page of your wildest dreams.
 If you want to add scripts or tags to the `<HEAD>` take a look at `/source/_includes/custom/head.html`.
 
 {% codeblock &lt;HEAD&gt; (source/_includes/custom/head.html) %}
-{% render_partial ../.themes/classic/source/_includes/custom/head.html raw %}
+{% render ../../../../.themes/classic/source/_includes/custom/head.html raw %}
 {% endcodeblock %}
 
 Here you can easily change or remove the [Google Webfonts](http://google.com/webfonts), insert javascripts, etc.
@@ -61,7 +61,7 @@ If you want to add a section to your sidebar, create a new file in `source/_incl
 Since many people probably want to add an About Me section, there's already an `about.html` file in there waiting to be added. Here's a look.
 
 {% codeblock About Me (source/_includes/custom/asides/about.html) %}
-{% render_partial ../.themes/classic/source/_includes/custom/asides/about.html raw %}
+{% render ../../../../.themes/classic/source/_includes/custom/asides/about.html raw %}
 {% endcodeblock %}
 
 Whenever you add a section to the sidebar, follow this pattern, with a `<section>` block and an `<h1>` for a title. To add it to the sidebar, edit the `_config.yml` and add it to the list of asides.
@@ -84,7 +84,7 @@ These are sections of the site that are most likely to be customized. You can ed
 The header title and subtitle should be configured in the `_config.yml` If you want to make other changes to the header, edit `/source/_includes/custom/header.html` which looks like this:
 
 {% codeblock Header (source/_includes/custom/header.html) %}
-{% render_partial ../.themes/classic/source/_includes/custom/header.html raw %}
+{% render ../../../../.themes/classic/source/_includes/custom/header.html raw %}
 {% endcodeblock %}
 
 <h3 id="changing_navigation">Changing the Navigation</h3>
@@ -92,7 +92,7 @@ The header title and subtitle should be configured in the `_config.yml` If you w
 To change or add links to the main navigation, edit `/source/_includes/custom/navigation.html` which looks like this:
 
 {% codeblock Navigation (source/_includes/custom/navigation.html) %}
-{% render_partial ../.themes/classic/source/_includes/custom/navigation.html raw %}
+{% render ../../../../.themes/classic/source/_includes/custom/navigation.html raw %}
 {% endcodeblock %}
 
 The `href` for each link begins with `{% raw %}{{ root_url }}{% endraw %}` (this helps Octopress write urls differently if a site is deployed to a subdirectory).
@@ -103,7 +103,7 @@ If you're deploying your site to a subdirectory like `yoursite.com/octopress` yo
 You can customize the footer in `source/_includes/custom/footer.html` which looks like this:
 
 {% codeblock Footer (source/_includes/custom/footer.html) %}
-{% render_partial ../.themes/classic/source/_includes/custom/footer.html raw %}
+{% render ../../../../.themes/classic/source/_includes/custom/footer.html raw %}
 {% endcodeblock %}
 
 Change this however you like, but be cool and keep the Octopress link in there.

@@ -21,7 +21,7 @@ use the following tag to embed it in a post.
 - `lang:language` - Force the syntax highlighter to use this language. By default the file extension is used for highlighing, but not all extensions are known by Pygments.
 
 {% assign show-range = true %}
-{% render_partial docs/plugins/_partials/options.markdown %}
+{% render docs/plugins/_partials/options.markdown %}
 
 ## Examples
 

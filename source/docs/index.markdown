@@ -29,4 +29,4 @@ Your blog should be awesome. This should help.
 - [Updating Octopress](/docs/updating) - *a guide to help you stay current with Octopress*
 
 ## Octopress Plugins - Usage & Examples
-{% render_partial docs/plugins/index.markdown %}
+{% render docs/plugins/index.markdown %}

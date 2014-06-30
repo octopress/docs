@@ -76,3 +76,6 @@ body > header {
   }
 }
 
+.light {
+  @include solarized-theme(light);
+}

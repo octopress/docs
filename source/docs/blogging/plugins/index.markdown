@@ -71,7 +71,7 @@ Import files on your filesystem into any blog post as embedded code snippets wit
 ## Render Partial
 Import files on your file system into any blog post or page. For example, to embed this page in another post I'd use the following code.
 
-    {{ "{% render_partial docs/blogging/plugins/index.markdown" }} %}
+    {{ "{% render docs/blogging/plugins/index.markdown" }} %}
 
 [Examples & documentation &raquo;](/docs/plugins/render-partial/)
 

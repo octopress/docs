@@ -23,7 +23,7 @@ code snippet
 - `[url]` - Download or reference link for your code.
 - `[link text]` - Text for the link, defaults to 'link'.
 
-{% render_partial docs/plugins/_partials/options.markdown %}
+{% render docs/plugins/_partials/options.markdown %}
 
 ## Examples
 
