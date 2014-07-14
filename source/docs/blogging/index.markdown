@@ -97,7 +97,7 @@ The title is derived from the filename so you'll likely want to change that. Thi
 
 ## Content
 
-The page and post content will be rendered by whichever markup engine you have specified in the site configuration file.  Additionally, you can use any of the [liquid template features](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers) that are described in the [Jekyll docs](https://github.com/mojombo/jekyll/wiki/Template-Data).
+The page and post content will be rendered by whichever markup engine you have specified in the site configuration file.  Additionally, you can use any of the [liquid template features](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers) that are described in the [Jekyll docs](http://jekyllrb.com/docs/variables/).
 
 Inserting a `<!-- more -->` comment into your post will prevent the post content below this mark from being displayed on the index page for the blog posts, a "Continue →" button links to the full post.
 
