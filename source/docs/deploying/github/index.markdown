@@ -105,7 +105,7 @@ echo 'www.your-domain.com' >> source/CNAME
 Next, you’ll need to visit your domain registrar or DNS host and add a record for your domain name.
 
 * For a sub-domain like `www.example.com` you would simply create a CNAME record pointing at `charlie.github.io.`.
-* If you are using a top-level domain like `example.com`, you must use an A record pointing to `204.232.175.78`.
+* If you are using a top-level domain like `example.com`, you must use an A record pointing to `192.30.252.153` or `192.30.252.154`.
 
 **Do not use a CNAME record with a top-level domain!** It can have adverse side effects on other services like email.
 Many DNS services will let you set a CNAME on a TLD, even though you shouldn’t. Remember that it may take up to a full day for DNS changes to propagate, so be patient.
