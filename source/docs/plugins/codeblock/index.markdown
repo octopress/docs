@@ -10,7 +10,7 @@ With this plugin you can write blocks of code directly in your posts and optiona
 
 ## Syntax
 
-    {{ "{% codeblock [lang:language] [title] [url] [link text] [start:#] [mark:#,#-#] [linenos:false]" }} %}
+    {{ "{% codeblock [lang:language] [title] [url] [link text]" }} %}
     code snippet
     {{ "{% endcodeblock" }} %}
 
@@ -74,26 +74,6 @@ var arr2 = new Array(element0, element1, ..., elementN);
     {% raw %}{% codeblock Javascript Array Syntax lang:js http://j.mp/pPUUmW MDN Documentation %}
     var arr1 = new Array(arrayLength);
     var arr2 = new Array(element0, element1, ..., elementN);
-    {% endcodeblock %}{% endraw %}
-
-**5.** This example uses a custom starting line number and marks lines 52 and 54 through 55.
-
-{% codeblock lang:coffeescript Coffeescript Tricks start:51 mark:51,54-55 %}
-# Given an alphabet:
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
-# Iterate over part of the alphabet:
-console.log letter for letter in alphabet[4..8]
-{% endcodeblock %}
-
-*The source:*
-
-    {% raw %}{% codeblock Coffeescript Tricks lang:coffeescript start:51 mark:51,54-55 %}
-    # Given an alphabet:
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
-    # Iterate over part of the alphabet:
-    console.log letter for letter in alphabet[4..8]
     {% endcodeblock %}{% endraw %}
 
 ### Other ways to embed code snippets
