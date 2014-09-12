@@ -14,6 +14,7 @@ If that sounds daunting, Octopress probably isn't for you.
 
 1. [Install Git](http://git-scm.com/).
 2. Install Ruby 1.9.3 or greater using either [rbenv](/docs/setup/rbenv) or [RVM](/docs/setup/rvm).
+3. Install one of the [ExecJS](https://github.com/sstephenson/execjs) supported JavaScript runtimes.
 
 If `ruby --version` doesn't say you're using Ruby at least 1.9.3, revisit your [rbenv](/docs/setup/rbenv) or [RVM](/docs/setup/rvm) installation.
 
