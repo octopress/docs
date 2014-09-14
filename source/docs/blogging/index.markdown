@@ -9,6 +9,7 @@ footer: false
 
 Octopress offers some rake tasks to create post and pages preloaded with metadata and according to Jekyll's naming conventions. It also generates a global and a category based feed for your posts (You can find them in `atom.xml` and `blog/categories/<category>/atom.xml`).
 
+If you are using zsh in the command line, then please add `alias rake=noglob rake` to your zsh config to prevent the `zsh: no matches found` error that occurs when running these rake tasks.
 ## Blog Posts
 Blog posts must be stored in the `source/_posts` directory and named according to Jekyll's naming conventions: `YYYY-MM-DD-post-title.markdown`. The name of the file will be used
 as the url slug, and the date helps with file distinction and determines the sorting order for post loops.
