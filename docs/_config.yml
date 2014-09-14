@@ -1,4 +1,5 @@
 gems:
+  - octopress-escape-code
   - octopress-solarized
 markdown: redcarpet
 redcarpet:

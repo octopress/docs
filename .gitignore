@@ -14,3 +14,4 @@ source/images/icon-*.png
 vendor
 node_modules
 .code-highlighter-cache
+_site
