@@ -4,14 +4,14 @@ module Octopress
       attr_reader :filename
 
       def initialize(options={})
-
         @file            = options[:file]
         @dir             = options[:dir] ||= '.'
         @file_dir        = File.dirname(@file)
         @plugin_name     = options[:plugin_name]
         @plugin_slug   ||= options[:plugin_slug] || @plugin_name
         @plugin_type     = options[:plugin_type] || 'plugin'
-        @base_url       = options[:base_url]
+        @base_url        = options[:base_url]
+        @index           = options[:index]
       end
 
       # Add doc page to Jekyll pages
@@ -44,6 +44,7 @@ module Octopress
           'docs_base_url' => base_url
         }
         @page.data['dir'] = doc_dir
+        @page.data['redirect_from'] = "#{base_url}/" if @index
         @page
       end
 
