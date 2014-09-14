@@ -30,7 +30,7 @@ Next you'll want to update your `Rakefile` to be sure your new blog index is pre
     blog_index_dir = 'source/blog'
 ```
 
-Then you may also need to update `_config.yml` to specify the pagination path in order to generate the blog index.
+Then you may also need to update `_config.yml` to specify the pagination path in order to generate the list of blog posts on the index page.
 
 ``` ruby
     paginate_path: "blog/posts/:num"
