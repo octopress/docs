@@ -4,7 +4,7 @@ module Octopress
       def self.init_with_program(p)
         p.command(:docs) do |c|
           c.syntax 'octopress docs'
-          c.description "Launch local server with docs for Octopress v#{Octopress::VERSION} and Octopress Ink plugins."
+          c.description "Launch local server with docs for Octopress v#{Octopress::VERSION} and Octopress plugins."
 
           c.option 'port', '-P', '--port [PORT]', 'Port to listen on'
           c.option 'host', '-H', '--host [HOST]', 'Host to bind to'

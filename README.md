@@ -1,4 +1,4 @@
-# Octopress::Docs
+# Octopress Docs
 
 TODO: Write a gem description
 
@@ -18,7 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Automatically add your Readme and Changelog files:
+
+```ruby
+begin
+  require 'octopress-docs'
+  Octopress::Docs.add({
+    name:        "Your Plugin",
+    dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../")),
+  })
+rescue
+end
+```
 
 ## Contributing
 

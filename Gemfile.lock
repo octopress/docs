@@ -1,12 +1,11 @@
 PATH
   remote: .
   specs:
-    octopress-docs (1.0.0)
+    octopress-docs (0.0.4)
       jekyll (~> 2.0)
       octopress (~> 3.0.0.rc)
       octopress-escape-code (~> 1.0)
-      octopress-ink (~> 1.0.0.rc)
-      octopress-solarized (~> 1.0)
+      octopress-hooks (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -56,7 +55,6 @@ GEM
       sass (~> 3.2)
     jekyll-watch (1.1.1)
       listen (~> 2.7)
-    json (1.8.1)
     kramdown (1.4.1)
     liquid (2.6.1)
     listen (2.7.9)
@@ -71,26 +69,7 @@ GEM
       titlecase
     octopress-escape-code (1.0.2)
       octopress-hooks (~> 2.0)
-    octopress-filters (1.2.0)
-      jekyll
-      octopress-hooks (~> 2.0)
-      rubypants-unicode
-      titlecase
     octopress-hooks (2.2.1)
-      jekyll (~> 2.0)
-    octopress-include-tag (1.0.0)
-      jekyll (~> 2.0)
-      octopress-tag-helpers (~> 1.0)
-    octopress-ink (1.0.0.rc.17)
-      jekyll (~> 2.0)
-      octopress (~> 3.0.0.rc)
-      octopress-filters (~> 1.1)
-      octopress-hooks (~> 2.2)
-      octopress-include-tag (~> 1.0)
-      uglifier (~> 2.5)
-    octopress-solarized (1.0.2)
-      octopress-ink (~> 1.0.0.rc)
-    octopress-tag-helpers (1.0.2)
       jekyll (~> 2.0)
     parslet (1.5.0)
       blankslate (~> 2.0)
@@ -110,7 +89,6 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.1.2)
-    rubypants-unicode (0.2.3)
     safe_yaml (1.0.3)
     sass (3.4.4)
     slop (3.6.0)
@@ -119,9 +97,6 @@ GEM
     titlecase (0.1.1)
     toml (0.1.1)
       parslet (~> 1.5.0)
-    uglifier (2.5.3)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
     yajl-ruby (1.1.0)
 
 PLATFORMS

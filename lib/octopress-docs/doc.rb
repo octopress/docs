@@ -1,15 +1,15 @@
 module Octopress
   module Docs
     class Doc
-      attr_reader :filename
+      attr_reader :filename, :plugin_name
 
       def initialize(options={})
         @file            = options[:file]
         @dir             = options[:dir] ||= '.'
         @file_dir        = File.dirname(@file)
-        @plugin_name     = options[:plugin_name]
-        @plugin_slug   ||= options[:plugin_slug] || @plugin_name
-        @plugin_type     = options[:plugin_type] || 'plugin'
+        @plugin_name     = options[:name]
+        @plugin_slug   ||= options[:slug] || @plugin_name
+        @plugin_type     = options[:type] || 'plugin'
         @base_url        = options[:base_url]
         @index           = options[:index]
       end
@@ -44,8 +44,16 @@ module Octopress
           'docs_base_url' => base_url
         }
         @page.data['dir'] = doc_dir
-        @page.data['redirect_from'] = "#{base_url}/" if @index
+        @page.data['permalink'] = "/" if @index
         @page
+      end
+
+      def base_url
+        @base_url || if @plugin_type == 'theme'
+          File.join('docs', 'theme')
+        else
+          File.join('docs', 'plugins', @plugin_slug)
+        end
       end
 
       private
@@ -60,14 +68,6 @@ module Octopress
 
       def plugin_slug
         Filters.sluggify @plugin_type == 'theme' ? 'theme' : @plugin_slug
-      end
-
-      def base_url
-        @base_url || if @plugin_type == 'theme'
-          File.join('docs', 'theme')
-        else
-          File.join('docs', 'plugins', @plugin_slug)
-        end
       end
 
       def page_dir

@@ -1,17 +1,12 @@
 ---
 layout: default
 ---
-OMG DOCS
 
-```ruby title:"food is good"
-puts @awesome unless var == 'lame'
-```
-
-{% for plugin in doc_pages %}
-<h4>{{ plugin[1].name }}</h4>
+{% for plugin in plugin_docs %}
+<h4>{{ plugin.name }}</h4>
 <ul>
-{% for page in plugin[1].pages %}
-<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{% for doc in plugin.docs %}
+<li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
 {% endfor %}
 </ul>
 {% endfor %}
