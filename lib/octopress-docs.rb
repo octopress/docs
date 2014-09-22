@@ -2,9 +2,11 @@ require "octopress"
 require "jekyll"
 require "octopress-escape-code"
 require "octopress-hooks"
+require "find"
 
 require "octopress-docs/version"
 require "octopress-docs/command"
+require "octopress-docs/page"
 require "octopress-docs/doc"
 require "octopress-docs/tag"
 require "octopress-docs/hooks"
@@ -53,20 +55,26 @@ module Octopress
       }
     end
 
-    def self.add_plugin_docs(plugin, dir, files)
-      pages = []
-      options = plugin_options(plugin).merge({
-        dir: File.join(plugin.assets_path, dir),
-      })
-
-      files.each do |doc|
+    def self.add_plugin_docs(plugin)
+      plugin_doc_pages = []
+      options = plugin_options(plugin)
+      find_doc_pages(options).each do |doc|
         unless doc =~ /^_/
-          opts = options.merge({file: doc})   
-          pages << add_doc_page(opts)
+          opts = options.merge({file: doc, dir: options[:docs_path]})   
+          plugin_doc_pages << add_doc_page(opts)
         end
       end
 
-      pages
+      has_index = !plugin_doc_pages.select {|d| d.file =~ /^index/ }.empty?
+
+      # Make these work
+      #@docs << Octopress::Docs.add_root_plugin_doc(self, 'readme', index: !has_index)
+      #@docs << Octopress::Docs.add_root_plugin_doc(self, 'changelog')
+
+      require 'pry-byebug'; binding.pry
+      
+
+      plugin_doc_pages
     end
 
     def self.plugin_options(plugin)
@@ -74,15 +82,43 @@ module Octopress
         name: plugin.name,
         slug: plugin.slug,
         type: plugin.type,
-        base_url: plugin.docs_base_url,
-        dir: plugin.path
+        base_url: plugin.docs_url,
+        path: plugin.path,
+        docs_path: File.join(plugin.assets_path, 'docs'),
+        docs: %w{readme changelog}
       }
     end
 
-    def self.add(options)
+    def self.default_options(options)
+      options[:type] ||= 'plugin'
+      options[:slug] = slug(options)
+      options[:base_url] = base_url(options)
+      options[:dir] ||= '.'
+    end
 
-      root_docs = []
+    def self.slug(options)
+      slug = options[:slug] || options[:name]
+      options[:type] == 'theme' ? 'theme' : Jekyll::Utils.slugify(slug)
+    end
+    
+    def self.base_url(options)
+      options[:base_url] || if options[:type] == 'theme'
+        File.join('docs', 'theme')
+      else
+        File.join('docs', 'plugins', options[:slug])
+      end
+    end
+
+    def self.add(options)
       options[:docs] ||= %w{readme changelog}
+      options[:docs_path] ||= File.join(options[:dir], 'assets', 'docs')
+      docs = []
+      docs.concat add_root_docs(options)
+      docs.concat 
+    end
+
+    def self.add_root_docs(options)
+      root_docs = []
       options[:docs].each do |doc|
         if doc =~ /readme/
           root_docs << add_root_doc(doc, options.merge({index: true}))
@@ -112,8 +148,23 @@ module Octopress
       page
     end
 
+    private
+
+    def self.find_doc_pages(options)
+      full_dir = options[:docs_path]
+      glob_assets(full_dir).map do |file|
+        file.sub(full_dir+'/', '')
+      end
+    end
+
+    def self.glob_assets(dir)
+      return [] unless Dir.exist? dir
+      Find.find(dir).to_a.reject {|f| File.directory? f }
+    end
+
     def self.select_first(dir, match)
       Dir.new(dir).select { |f| f =~/#{match}/i}.first
     end
+
   end
 end

@@ -36,7 +36,7 @@ module Octopress
           'config-file' => File.join(site_dir, '_octopress.yml'),
           'override' => { 'docs_mode' => true }
         })
-        require_gems
+        require_plugins
         options['source'] = site_dir
         options['destination'] = File.join(site_dir, '_site')
         options
@@ -59,16 +59,32 @@ module Octopress
         Docs.gem_dir('docs')
       end
 
-      def self.require_gems
-        file = File.join(Dir.pwd, '_config.yml')
-        if File.exist? file
-          config = YAML.safe_load(File.open(file))
-          gems = config['gems']
-          if gems && gems.is_a?(Array)
-            gems.each {|g| require g }
+      def self.require_plugins
+        config = Octopress.site.config
+
+        if config['gems'].is_a?(Array)
+          config['gems'].each {|g| require g }
+        end
+
+        unless config['safe']
+          plugins_path.each do |plugins|
+            Dir[File.join(plugins, "**", "*.rb")].sort.each do |f|
+              require f
+            end
           end
         end
+        
       end
+
+      # Returns an Array of plugin search paths
+      def self.plugins_path
+        if (Octopress.site.config['plugins'] == Jekyll::Configuration::DEFAULTS['plugins'])
+          [Jekyll.sanitized_path(Octopress.site.source, Octopress.site.config['plugins'])]
+        else
+          Array(Octopress.site.config['plugins']).map { |d| File.expand_path(d) }
+        end
+      end
+      
     end
   end
 end

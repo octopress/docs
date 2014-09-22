@@ -1,7 +1,7 @@
 module Octopress
   module Docs
     class DocsSiteHook < Octopress::Hooks::Site
-      def post_read(site)
+      def pre_render(site)
         if Octopress.config['docs_mode']
           site.pages.concat Octopress::Docs.pages
         end
