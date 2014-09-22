@@ -29,14 +29,15 @@ module Octopress
     end
 
     def self.pages_info
-      plugin_docs = []
-      @docs.keys.each { |slug|
-        plugin_docs << {
-          "name" => @docs[slug].first.plugin_name,
-          "docs" => plugin_docs(@docs[slug])
+      docs = @docs.clone
+      docs.each { |slug, pages|
+        docs[slug] = {
+          "name" => pages.first.plugin_name,
+          "docs" => plugin_docs(pages)
         }
       }
-      { 'plugin_docs' => plugin_docs }
+
+      { 'plugin_docs' => docs }
     end
 
     def self.plugin_docs(pages)
@@ -70,9 +71,6 @@ module Octopress
       # Make these work
       #@docs << Octopress::Docs.add_root_plugin_doc(self, 'readme', index: !has_index)
       #@docs << Octopress::Docs.add_root_plugin_doc(self, 'changelog')
-
-      require 'pry-byebug'; binding.pry
-      
 
       plugin_doc_pages
     end

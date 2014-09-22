@@ -3,9 +3,9 @@ layout: default
 ---
 
 {% for plugin in plugin_docs %}
-<h4>{{ plugin.name }}</h4>
+<h4>{{ plugin[1].name }}</h4>
 <ul>
-{% for doc in plugin.docs %}
+{% for doc in plugin[1].docs %}
 <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
 {% endfor %}
 </ul>
