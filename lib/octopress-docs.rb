@@ -68,9 +68,8 @@ module Octopress
 
       has_index = !plugin_doc_pages.select {|d| d.file =~ /^index/ }.empty?
 
-      # Make these work
-      #@docs << Octopress::Docs.add_root_plugin_doc(self, 'readme', index: !has_index)
-      #@docs << Octopress::Docs.add_root_plugin_doc(self, 'changelog')
+      plugin_doc_pages << add_root_plugin_doc(plugin, 'readme', index: !has_index)
+      plugin_doc_pages << add_root_plugin_doc(plugin, 'changelog')
 
       plugin_doc_pages
     end
@@ -81,7 +80,7 @@ module Octopress
         slug: plugin.slug,
         type: plugin.type,
         base_url: plugin.docs_url,
-        path: plugin.path,
+        dir: plugin.path,
         docs_path: File.join(plugin.assets_path, 'docs'),
         docs: %w{readme changelog}
       }
@@ -136,6 +135,8 @@ module Octopress
 
     def self.add_root_plugin_doc(plugin, filename, options={})
       options = plugin_options(plugin).merge(options)
+      
+      require 'pry-byebug'; binding.pry
       add_root_doc(filename, options)
     end
 
