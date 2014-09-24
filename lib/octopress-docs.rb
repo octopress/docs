@@ -136,8 +136,6 @@ module Octopress
 
     def self.add_root_plugin_doc(plugin, filename, options={})
       options = plugin_options(plugin).merge(options)
-      
-      require 'pry-byebug'; binding.pry
       add_root_doc(filename, options)
     end
 
