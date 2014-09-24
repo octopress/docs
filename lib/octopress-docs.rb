@@ -112,7 +112,7 @@ module Octopress
       options[:docs_path] ||= File.join(options[:dir], 'assets', 'docs')
       docs = []
       docs.concat add_root_docs(options)
-      docs.concat 
+      docs.compact! 
     end
 
     def self.add_root_docs(options)
