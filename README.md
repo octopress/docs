@@ -18,14 +18,15 @@ Or install it yourself as:
 
 ## Usage
 
-Automatically add your Readme and Changelog files:
+Automatically add your Readme and Changelog files along with any pages in your gem path under `/assets/docs`.
 
 ```ruby
 begin
   require 'octopress-docs'
   Octopress::Docs.add({
     name:        "Your Plugin",
-    dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../")),
+    slug:        "your-plugin",
+    dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../"))
   })
 rescue LoadError
 end

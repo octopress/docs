@@ -19,11 +19,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "jekyll", "~> 2.0"
-  spec.add_runtime_dependency "octopress", "~> 3.0.0.rc"
   spec.add_runtime_dependency "octopress-hooks", "~> 2.0"
   spec.add_runtime_dependency "octopress-escape-code", "~> 1.0"
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
 
   if RUBY_VERSION >= "2"

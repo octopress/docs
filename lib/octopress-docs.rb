@@ -66,9 +66,10 @@ module Octopress
         end
       end
 
+      # If there is no docs index page, set the reame as the index page
       has_index = !plugin_doc_pages.select {|d| d.file =~ /^index/ }.empty?
-
       plugin_doc_pages << add_root_plugin_doc(plugin, 'readme', index: !has_index)
+
       plugin_doc_pages << add_root_plugin_doc(plugin, 'changelog')
 
       plugin_doc_pages
