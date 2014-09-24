@@ -57,14 +57,8 @@ module Octopress
     end
 
     def self.add_plugin_docs(plugin)
-      plugin_doc_pages = []
       options = plugin_options(plugin)
-      find_doc_pages(options).each do |doc|
-        unless doc =~ /^_/
-          opts = options.merge({file: doc, dir: options[:docs_path]})   
-          plugin_doc_pages << add_doc_page(opts)
-        end
-      end
+      plugin_doc_pages = add_asset_docs(options)
 
       # If there is no docs index page, set the reame as the index page
       has_index = !plugin_doc_pages.select {|d| d.file =~ /^index/ }.empty?
@@ -112,6 +106,7 @@ module Octopress
       options[:docs_path] ||= File.join(options[:dir], 'assets', 'docs')
       docs = []
       docs.concat add_root_docs(options)
+      docs.concat add_asset_docs(options)
       docs.compact! 
     end
 
@@ -147,6 +142,17 @@ module Octopress
     end
 
     private
+
+    def self.add_asset_docs(options)
+      docs = []
+      find_doc_pages(options).each do |doc|
+        unless doc =~ /^_/
+          opts = options.merge({file: doc, dir: options[:docs_path]})   
+          docs << add_doc_page(opts)
+        end
+      end
+      docs
+    end
 
     def self.find_doc_pages(options)
       full_dir = options[:docs_path]
