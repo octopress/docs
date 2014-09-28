@@ -58,14 +58,10 @@ module Octopress
 
     def self.add_plugin_docs(plugin)
       options = plugin_options(plugin)
+      options[:docs] ||= %w{readme docs}
+
       plugin_doc_pages = add_asset_docs(options)
-
-      # If there is no docs index page, set the reame as the index page
-      has_index = !plugin_doc_pages.select {|d| d.file =~ /^index/ }.empty?
-      plugin_doc_pages << add_root_plugin_doc(plugin, 'readme', index: !has_index)
-
-      plugin_doc_pages << add_root_plugin_doc(plugin, 'changelog')
-
+      plugin_doc_pages.concat add_root_docs(options, plugin_doc_pages)
       plugin_doc_pages
     end
 
@@ -105,19 +101,23 @@ module Octopress
       options[:docs] ||= %w{readme changelog}
       options[:docs_path] ||= File.join(options[:dir], 'assets', 'docs')
       docs = []
-      docs.concat add_root_docs(options)
       docs.concat add_asset_docs(options)
+      docs.concat add_root_docs(options, docs)
       docs.compact! 
     end
 
-    def self.add_root_docs(options)
+    def self.add_root_docs(options, asset_docs=[])
       root_docs = []
       options[:docs].each do |doc|
-        if doc =~ /readme/
-          root_docs << add_root_doc(doc, options.merge({index: true}))
-        else
-          root_docs << add_root_doc(doc, options)
+        doc_data = {
+          'title' => doc.capitalize
+        }
+
+        if doc =~ /readme/ && asset_docs.select {|d| d.file =~ /^index/ }.empty?
+          doc_data['permalink'] = '/'
         end
+
+        root_docs << add_root_doc(doc, options.merge(data: doc_data))
       end
       root_docs
     end
@@ -127,11 +127,6 @@ module Octopress
       if file = select_first(options[:dir], filename)
         add_doc_page(options.merge({file: file}))
       end
-    end
-
-    def self.add_root_plugin_doc(plugin, filename, options={})
-      options = plugin_options(plugin).merge(options)
-      add_root_doc(filename, options)
     end
 
     def self.add_doc_page(options)

@@ -11,7 +11,7 @@ module Octopress
         @plugin_slug     = options[:slug]
         @plugin_type     = options[:type]
         @base_url        = options[:base_url]
-        @index           = options[:index]
+        @data            = options[:data] || {}
       end
 
       # Add doc page to Jekyll pages
@@ -44,7 +44,7 @@ module Octopress
           'docs_base_url' => @base_url
         }
         @page.data['dir'] = doc_dir
-        @page.data['permalink'] = "/" if @index
+        @page.data = @data.merge(@page.data)
         @page
       end
 
