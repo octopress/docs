@@ -59,7 +59,7 @@ module Octopress
       end
 
       def plugin_slug
-        Filters.sluggify @plugin_type == 'theme' ? 'theme' : @plugin_slug
+        Jekyll::Utils.slugify(@plugin_type == 'theme' ? 'theme' : @plugin_slug)
       end
 
       def page_dir

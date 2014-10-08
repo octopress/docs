@@ -17,7 +17,7 @@ module Octopress
       end
 
       def hooks
-        self.site.page_hooks
+        Octopress.site.page_hooks
       end
 
       def destination(dest)

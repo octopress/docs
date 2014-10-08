@@ -20,6 +20,7 @@ module Octopress
       end
 
       def self.serve_docs(options)
+        Octopress::Docs.docs_mode = true
         if options['jekyll']
           options = init_jekyll_docs(options)
         else
@@ -60,7 +61,7 @@ module Octopress
       end
 
       def self.require_plugins
-        config = Octopress.site.config
+        config = Octopress::Configuration.jekyll_config
 
         if config['gems'].is_a?(Array)
           config['gems'].each {|g| require g }
@@ -78,10 +79,12 @@ module Octopress
 
       # Returns an Array of plugin search paths
       def self.plugins_path
-        if (Octopress.site.config['plugins'] == Jekyll::Configuration::DEFAULTS['plugins'])
-          [Jekyll.sanitized_path(Octopress.site.source, Octopress.site.config['plugins'])]
+        config = Octopress::Configuration.jekyll_config
+        plugins = config['plugins']
+        if (plugins == Jekyll::Configuration::DEFAULTS['plugins'])
+          [Jekyll.sanitized_path(config['source'], plugins)]
         else
-          Array(Octopress.site.config['plugins']).map { |d| File.expand_path(d) }
+          Array(plugins).map { |d| File.expand_path(d) }
         end
       end
       

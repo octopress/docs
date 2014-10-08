@@ -12,14 +12,33 @@ require "octopress-docs/tag"
 require "octopress-docs/hooks"
 
 module Octopress
+  unless defined? Octopress.site
+    def self.site
+      @site
+    end
+
+    def self.site=(site)
+      @site = site
+    end
+  end
+
   module Docs
     attr_reader :docs
     @docs = {}
+    @docs_mode = false
 
     autoload :Doc, 'octopress-docs/doc'
 
     def self.gem_dir(dir='')
       File.expand_path(File.join(File.dirname(__FILE__), '../', dir))
+    end
+
+    def self.docs_mode
+      @docs_mode
+    end
+
+    def self.docs_mode=(mode)
+      @docs_mode = mode
     end
 
     # Get all doc pages
@@ -82,6 +101,7 @@ module Octopress
       options[:slug] = slug(options)
       options[:base_url] = base_url(options)
       options[:dir] ||= '.'
+      options
     end
 
     def self.slug(options)
@@ -99,6 +119,7 @@ module Octopress
 
     def self.add(options)
       options[:docs] ||= %w{readme changelog}
+      options = default_options(options)
       options[:docs_path] ||= File.join(options[:dir], 'assets', 'docs')
       docs = []
       docs.concat add_asset_docs(options)
@@ -164,6 +185,5 @@ module Octopress
     def self.select_first(dir, match)
       Dir.new(dir).select { |f| f =~/#{match}/i}.first
     end
-
   end
 end
