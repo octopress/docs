@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    octopress-docs (0.0.8)
+    octopress-docs (0.0.9)
       jekyll (~> 2.0)
       octopress-escape-code (~> 1.0)
       octopress-hooks (~> 2.0)
@@ -28,7 +28,7 @@ GEM
     debugger-linecache (1.2.0)
     execjs (2.2.1)
     fast-stemmer (1.0.2)
-    ffi (1.9.4)
+    ffi (1.9.5)
     hitimes (1.2.2)
     jekyll (2.4.0)
       classifier-reborn (~> 2.0)
@@ -55,7 +55,7 @@ GEM
       listen (~> 2.7)
     kramdown (1.4.2)
     liquid (2.6.1)
-    listen (2.7.9)
+    listen (2.7.11)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -83,7 +83,7 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.1.2)
-    safe_yaml (1.0.3)
+    safe_yaml (1.0.4)
     sass (3.4.5)
     slop (3.6.0)
     timers (4.0.1)
