@@ -11,7 +11,6 @@ module Octopress
           if ENV['OCTODEV']
             c.option 'watch', '--watch', 'Watch docs site for changes and rebuild. (For docs development)'
           end
-          c.option 'jekyll', '--jekyll', "Launch local server with docs for Jekyll v#{Jekyll::VERSION}"
 
           c.action do |args, options|
             serve_docs(options)
@@ -21,11 +20,8 @@ module Octopress
 
       def self.serve_docs(options)
         Octopress::Docs.docs_mode = true
-        if options['jekyll']
-          options = init_jekyll_docs(options)
-        else
-          options = init_octopress_docs(options)
-        end
+        options = init_octopress_docs(options)
+        options["port"] ||= '4444'
         options["serving"] = true
         options = Jekyll.configuration Jekyll::Utils.symbolize_hash_keys(options)
         Jekyll::Commands::Build.process(options)

@@ -1,35 +1,19 @@
 # Octopress Docs
 
-TODO: Write a gem description
+If you have the Octopress gem installed, run `$ octopress docs` from the root of your Jekyll site, and a website will mount at `http://localhost:4444` with documentation for Octopress and any plugins which support this feature.
 
-## Installation
+## Adding docs to your plugin
 
-Add this line to your application's Gemfile:
-
-    gem 'octopress-docs'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install octopress-docs
-
-## Usage
-
-Automatically add your Readme and Changelog files along with any pages in your gem path under `/assets/docs`.
+Use the code below to automatically add your plugin’s Readme, Changelog and any pages in your gem path under `assets/docs`.
+If your plugin is built on Octopress Ink, these documentation pages are added automatically.
 
 ```ruby
-begin
-  require 'octopress-docs'
-  Octopress::Docs.add({
-    name:        "Your Plugin",
-    slug:        "your-plugin",
-    dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../"))
-  })
-rescue LoadError
-end
+require 'octopress-docs'
+Octopress::Docs.add({
+  name:        "Your Plugin",
+  slug:        "your-plugin",
+  dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../"))
+})
 ```
 
 ## Contributing
