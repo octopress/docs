@@ -61,6 +61,15 @@ GEM
       rb-inotify (>= 0.9)
     mercenary (0.3.4)
     method_source (0.8.2)
+    octopress (3.0.0.rc.15)
+      jekyll (~> 2.0)
+      mercenary (~> 0.3.2)
+      octopress-deploy
+      octopress-docs
+      titlecase
+    octopress-deploy (1.0.0)
+      colorator
+      octopress-docs
     octopress-escape-code (1.0.2)
       octopress-hooks (~> 2.0)
     octopress-hooks (2.2.1)
@@ -88,6 +97,7 @@ GEM
     slop (3.6.0)
     timers (4.0.1)
       hitimes
+    titlecase (0.1.1)
     toml (0.1.1)
       parslet (~> 1.5.0)
     yajl-ruby (1.1.0)
@@ -97,6 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.6)
+  octopress
   octopress-docs!
   pry-byebug
   rake

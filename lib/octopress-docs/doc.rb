@@ -43,8 +43,10 @@ module Octopress
           'slug' => plugin_slug,
           'docs_base_url' => @base_url
         }
+
         @page.data['dir'] = doc_dir
         @page.data = @data.merge(@page.data)
+        @page.data.merge!(comment_yaml(@page.content))
         @page
       end
 
@@ -70,6 +72,13 @@ module Octopress
         File.join(@dir, page_dir, File.dirname(@file))
       end
 
+      def comment_yaml(content)
+        if content =~ /<!-{3}\s+(.+)?-{3}>/m
+          SafeYAML.load($1)
+        else
+          {}
+        end
+      end
     end
   end
 end
