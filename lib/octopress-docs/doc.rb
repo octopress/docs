@@ -1,7 +1,7 @@
 module Octopress
   module Docs
     class Doc
-      attr_reader :filename, :plugin_name, :base_url
+      attr_reader :filename, :plugin_name, :base_url, :plugin_type, :description, :source_url
 
       def initialize(options={})
         @file            = options[:file]
@@ -11,6 +11,8 @@ module Octopress
         @plugin_slug     = options[:slug]
         @plugin_type     = options[:type]
         @base_url        = options[:base_url]
+        @source_url      = options[:source_url]
+        @description     = options[:description]
         @data            = options[:data] || {}
       end
 
@@ -41,7 +43,9 @@ module Octopress
         @page.data['plugin'] = { 
           'name' => @plugin_name, 
           'slug' => plugin_slug,
-          'docs_base_url' => @base_url
+          'docs_base_url' => @base_url,
+          'source_url' => @source_url,
+          'description' => @description
         }
 
         @page.data['dir'] = doc_dir

@@ -4,15 +4,18 @@ If you have the Octopress gem installed, run `$ octopress docs` from the root of
 
 ## Adding docs to your plugin
 
-Use the code below to automatically add your plugin’s Readme, Changelog and any pages in your gem path under `assets/docs`.
+Use the code below to automatically add your plugin's Readme, Changelog and any pages in your gem path under `assets/docs`.
 If your plugin is built on Octopress Ink, these documentation pages are added automatically.
 
 ```ruby
 require 'octopress-docs'
 Octopress::Docs.add({
   name:        "Your Plugin",
-  slug:        "your-plugin",
-  dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../"))
+  description: "This plugin causes awesomeness",
+  dir:         File.expand_path(File.join(File.dirname(__FILE__), "../../")),
+  slug:        "your-plugin",                      # optional
+  source_url:  "https://github.com/some/project",  # optional
+  website:     "http://example.com",               # optional
 })
 ```
 

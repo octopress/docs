@@ -1,14 +1,15 @@
 ---
 layout: default
 ---
+{% include nav.html %}
 
 {{ content }}
 
-<h4>{{ page.plugin.name }} Doc Pages</h4>
-<nav role='navigation'>
-<ul>
-{% for doc in plugin_docs[page.plugin.slug].docs %}
-<li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+{% assign doc_pages = plugin_docs[page.plugin.slug].docs %}
+{% if doc_pages.size > 1 %}
+<nav class='plugin-nav' role='navigation'>
+{% for doc in doc_pages %}
+<a href="{{ doc.url }}">{{ doc.title }}</a>
 {% endfor %}
-</ul>
 </nav>
+{% endif %}

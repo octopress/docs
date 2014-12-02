@@ -52,9 +52,14 @@ module Octopress
       docs.each { |slug, pages|
         docs[slug] = {
           "name" => pages.first.plugin_name,
-          "docs" => plugin_docs(pages)
+          "docs" => plugin_docs(pages),
+          "url"  => pages.first.base_url,
+          "type"  => pages.first.plugin_type,
+          "description"  => pages.first.description,
+          "source_url"  => pages.first.source_url
         }
       }
+
 
       { 'plugin_docs' => docs }
     end
@@ -91,6 +96,7 @@ module Octopress
         type: plugin.type,
         base_url: plugin.docs_url,
         dir: plugin.path,
+        source_url: plugin.source_url,
         docs_path: File.join(plugin.assets_path, 'docs'),
         docs: %w{readme changelog}
       }
@@ -187,3 +193,12 @@ module Octopress
     end
   end
 end
+
+# Add documentation for this plugin
+
+Octopress::Docs.add({
+  name:        "Octopress Docs",
+  description: "The fancy local documentation viewer.",
+  source_url:  "https://github.com/octopress/docs",
+  dir:         File.expand_path(File.join(File.dirname(__FILE__), "../"))
+})
