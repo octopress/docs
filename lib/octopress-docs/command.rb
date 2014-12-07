@@ -13,6 +13,8 @@ module Octopress
           end
 
           c.action do |args, options|
+            # Only add Liquid filters when serving docs site
+            require "octopress-docs/liquid_filters"
             serve_docs(options)
           end
         end
