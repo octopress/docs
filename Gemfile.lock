@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    octopress-docs (0.0.9)
+    octopress-docs (0.0.10)
       jekyll (~> 2.0)
       octopress-escape-code (~> 1.0)
       octopress-hooks (~> 2.0)
