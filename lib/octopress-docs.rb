@@ -8,7 +8,6 @@ require "octopress-docs/version"
 require "octopress-docs/command"
 require "octopress-docs/page"
 require "octopress-docs/doc"
-require "octopress-docs/tag"
 require "octopress-docs/hooks"
 
 module Octopress
@@ -97,6 +96,7 @@ module Octopress
         base_url: plugin.docs_url,
         dir: plugin.path,
         source_url: plugin.source_url,
+        website: plugin.website,
         docs_path: File.join(plugin.assets_path, 'docs'),
         docs: %w{readme changelog}
       }

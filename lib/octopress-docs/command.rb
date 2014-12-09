@@ -13,14 +13,20 @@ module Octopress
           end
 
           c.action do |args, options|
-            # Only add Liquid filters when serving docs site
-            require "octopress-docs/liquid_filters"
             serve_docs(options)
           end
         end
       end
 
       def self.serve_docs(options)
+        # Activate dependencies for serving docs.
+        require "octopress-escape-code"
+        require "octopress-hooks"
+        require "octopress-docs/page"
+        require "octopress-docs/doc"
+        require "octopress-docs/hooks"
+        require "octopress-docs/liquid_filters"
+
         Octopress::Docs.docs_mode = true
         options = init_octopress_docs(options)
         options["port"] ||= '4444'
