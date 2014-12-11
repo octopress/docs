@@ -27,7 +27,7 @@ module Octopress
         require "octopress-docs/hooks"
         require "octopress-docs/liquid_filters"
 
-        Octopress::Docs.docs_mode = true
+        ENV['OCTOPRESS_DOCS'] = true
         options = init_octopress_docs(options)
         options["port"] ||= '4444'
         options["serving"] = true
@@ -37,10 +37,6 @@ module Octopress
       end
 
       def self.init_octopress_docs(options)
-        Octopress.config({
-          'config-file' => File.join(site_dir, '_octopress.yml'),
-          'override' => { 'docs_mode' => true }
-        })
         require_plugins
         options['source'] = site_dir
         options['destination'] = File.join(site_dir, '_site')

@@ -19,9 +19,7 @@ module Octopress
       # Add doc page to Jekyll pages
       #
       def add
-        if Octopress.config['docs_mode']
-          Octopress.site.pages << page
-        end
+        Octopress.site.pages << page
       end
 
       def disabled?

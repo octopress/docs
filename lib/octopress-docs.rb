@@ -1,14 +1,9 @@
 require "octopress"
 require "jekyll"
-require "octopress-escape-code"
-require "octopress-hooks"
 require "find"
 
 require "octopress-docs/version"
 require "octopress-docs/command"
-require "octopress-docs/page"
-require "octopress-docs/doc"
-require "octopress-docs/hooks"
 
 module Octopress
   unless defined? Octopress.site
@@ -24,20 +19,11 @@ module Octopress
   module Docs
     attr_reader :docs
     @docs = {}
-    @docs_mode = false
 
     autoload :Doc, 'octopress-docs/doc'
 
     def self.gem_dir(dir='')
       File.expand_path(File.join(File.dirname(__FILE__), '../', dir))
-    end
-
-    def self.docs_mode
-      @docs_mode
-    end
-
-    def self.docs_mode=(mode)
-      @docs_mode = mode
     end
 
     # Get all doc pages
