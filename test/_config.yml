@@ -1,0 +1,3 @@
+gems:
+  - octopress-date-format
+markdown: redcarpet

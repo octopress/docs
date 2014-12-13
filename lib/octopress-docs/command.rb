@@ -20,24 +20,28 @@ module Octopress
 
       def self.serve_docs(options)
         # Activate dependencies for serving docs.
-        require "octopress-escape-code"
         require "octopress-hooks"
-        require "octopress-docs/page"
+        require "octopress-escape-code"
+        require "octopress-docs/jekyll/convertible"
+        require "octopress-docs/jekyll/page"
         require "octopress-docs/doc"
         require "octopress-docs/hooks"
         require "octopress-docs/liquid_filters"
 
-        ENV['OCTOPRESS_DOCS'] = true
+        ENV['OCTOPRESS_DOCS'] = 'true'
         options = init_octopress_docs(options)
-        options["port"] ||= '4444'
+        options["port"] = '4444'
         options["serving"] = true
-        options = Jekyll.configuration Jekyll::Utils.symbolize_hash_keys(options)
-        Jekyll::Commands::Build.process(options)
-        Jekyll::Commands::Serve.process(options)
+        Octopress.site({'config'=>options['config']}).plugin_manager.conscientious_require
+        options = Octopress.site.config.merge(options)
+        
+        Dir.chdir(options['source']) do
+          Jekyll::Commands::Build.process(options)
+          Jekyll::Commands::Serve.process(options)
+        end
       end
 
       def self.init_octopress_docs(options)
-        require_plugins
         options['source'] = site_dir
         options['destination'] = File.join(site_dir, '_site')
         options
@@ -57,37 +61,8 @@ module Octopress
       end
 
       def self.site_dir
-        Docs.gem_dir('docs')
+        Docs.gem_dir('site')
       end
-
-      def self.require_plugins
-        config = Octopress::Configuration.jekyll_config
-
-        if config['gems'].is_a?(Array)
-          config['gems'].each {|g| require g }
-        end
-
-        unless config['safe']
-          plugins_path.each do |plugins|
-            Dir[File.join(plugins, "**", "*.rb")].sort.each do |f|
-              require f
-            end
-          end
-        end
-        
-      end
-
-      # Returns an Array of plugin search paths
-      def self.plugins_path
-        config = Octopress::Configuration.jekyll_config
-        plugins = config['plugins']
-        if (plugins == Jekyll::Configuration::DEFAULTS['plugins'])
-          [Jekyll.sanitized_path(config['source'], plugins)]
-        else
-          Array(plugins).map { |d| File.expand_path(d) }
-        end
-      end
-      
     end
   end
 end

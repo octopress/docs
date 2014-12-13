@@ -5,7 +5,7 @@ module Octopress
 
       def initialize(options={})
         @file            = options[:file]
-        @dir             = options[:dir] ||= '.'
+        @path            = options[:path] ||= '.'
         @file_dir        = File.dirname(@file)
         @plugin_name     = options[:name]
         @plugin_slug     = options[:slug]
@@ -36,7 +36,7 @@ module Octopress
 
       def page
         return @page if @page
-        @page = Octopress::Docs::Page.new(Octopress.site, @dir, page_dir, file, {'path'=>@base_url})
+        @page = Octopress::Docs::Page.new(Octopress.site, @path, page_dir, file, {'path'=>@base_url})
         @page.data['layout'] = 'docs'
         @page.data['plugin'] = { 
           'name' => @plugin_name, 
@@ -59,7 +59,7 @@ module Octopress
       end
 
       def read
-        File.open(File.join(@dir, @file)).read
+        File.open(File.join(@path, @file)).read
       end
 
       def plugin_slug
@@ -71,7 +71,7 @@ module Octopress
       end
 
       def doc_dir
-        File.join(@dir, page_dir, File.dirname(@file))
+        File.join(@path, page_dir, File.dirname(@file))
       end
 
       def comment_yaml(content)

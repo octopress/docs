@@ -6,16 +6,6 @@ require "octopress-docs/version"
 require "octopress-docs/command"
 
 module Octopress
-  unless defined? Octopress.site
-    def self.site
-      @site
-    end
-
-    def self.site=(site)
-      @site = site
-    end
-  end
-
   module Docs
     attr_reader :docs
     @docs = {}
@@ -45,6 +35,7 @@ module Octopress
         }
       }
 
+      docs = docs.sort_by { |k,v| v['name'] }
 
       { 'plugin_docs' => docs }
     end
@@ -80,7 +71,7 @@ module Octopress
         slug: plugin.slug,
         type: plugin.type,
         base_url: plugin.docs_url,
-        dir: plugin.path,
+        path: plugin.path,
         source_url: plugin.source_url,
         website: plugin.website,
         docs_path: File.join(plugin.assets_path, 'docs'),
@@ -92,7 +83,7 @@ module Octopress
       options[:type] ||= 'plugin'
       options[:slug] = slug(options)
       options[:base_url] = base_url(options)
-      options[:dir] ||= '.'
+      options[:path] ||= '.'
       options
     end
 
@@ -112,7 +103,7 @@ module Octopress
     def self.add(options)
       options[:docs] ||= %w{readme changelog}
       options = default_options(options)
-      options[:docs_path] ||= File.join(options[:dir], 'assets', 'docs')
+      options[:docs_path] ||= File.join(options[:path], 'assets', 'docs')
       docs = []
       docs.concat add_asset_docs(options)
       docs.concat add_root_docs(options, docs)
@@ -137,7 +128,7 @@ module Octopress
 
     # Add a single root doc
     def self.add_root_doc(filename, options)
-      if file = select_first(options[:dir], filename)
+      if file = select_first(options[:path], filename)
         add_doc_page(options.merge({file: file}))
       end
     end
@@ -155,7 +146,7 @@ module Octopress
       docs = []
       find_doc_pages(options).each do |doc|
         unless doc =~ /^_/
-          opts = options.merge({file: doc, dir: options[:docs_path]})   
+          opts = options.merge({file: doc, path: options[:docs_path]})   
           docs << add_doc_page(opts)
         end
       end
@@ -186,5 +177,5 @@ Octopress::Docs.add({
   name:        "Octopress Docs",
   description: "The fancy local documentation viewer.",
   source_url:  "https://github.com/octopress/docs",
-  dir:         File.expand_path(File.join(File.dirname(__FILE__), "../"))
+  path:         File.expand_path(File.join(File.dirname(__FILE__), "../"))
 })

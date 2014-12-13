@@ -9,7 +9,7 @@ PATH
 PATH
   remote: ../../cli
   specs:
-    octopress (3.0.0.rc.21)
+    octopress (3.0.0.rc.19)
       jekyll (~> 2.0)
       mercenary (~> 0.3.2)
       octopress-deploy
@@ -19,7 +19,7 @@ PATH
 PATH
   remote: ../../ink
   specs:
-    octopress-ink (1.0.0.rc.20)
+    octopress-ink (1.0.0.rc.19)
       jekyll (~> 2.0)
       octopress (~> 3.0.0.rc)
       octopress-docs
@@ -29,8 +29,36 @@ PATH
       uglifier (~> 2.5)
 
 PATH
-  remote: ../../jekyll
+  remote: ../../solarized
   specs:
+    octopress-solarized (1.0.2)
+      octopress-ink (~> 1.0.0.rc)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    blankslate (2.1.2.4)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
+    classifier-reborn (2.0.2)
+      fast-stemmer (~> 1.0)
+    coderay (1.1.0)
+    coffee-script (2.3.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.8.0)
+    colorator (0.1)
+    columnize (0.3.6)
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.2)
+    execjs (2.2.2)
+    fast-stemmer (1.0.2)
+    ffi (1.9.6)
+    hitimes (1.2.2)
     jekyll (2.5.2)
       classifier-reborn (~> 2.0)
       colorator (~> 0.1)
@@ -46,37 +74,6 @@ PATH
       redcarpet (~> 3.1)
       safe_yaml (~> 1.0)
       toml (~> 0.1.0)
-
-PATH
-  remote: ../../solarized
-  specs:
-    octopress-solarized (1.0.2)
-      octopress-ink (~> 1.0.0.rc)
-
-GEM
-  remote: https://rubygems.org/
-  specs:
-    blankslate (2.1.2.4)
-    byebug (3.5.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
-    celluloid (0.16.0)
-      timers (~> 4.0.0)
-    classifier-reborn (2.0.2)
-      fast-stemmer (~> 1.0)
-    coderay (1.1.0)
-    coffee-script (2.3.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.8.0)
-    colorator (0.1)
-    columnize (0.9.0)
-    debugger-linecache (1.2.0)
-    execjs (2.2.2)
-    fast-stemmer (1.0.2)
-    ffi (1.9.6)
-    hitimes (1.2.2)
     jekyll-coffeescript (1.0.1)
       coffee-script (~> 2.2)
     jekyll-gist (1.1.0)
@@ -94,9 +91,6 @@ GEM
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
     method_source (0.8.2)
-    octopress-date-format (3.0.1)
-      jekyll (~> 2.0)
-      octopress-hooks (~> 2.0)
     octopress-deploy (1.0.0)
       colorator
       octopress-docs
@@ -107,7 +101,7 @@ GEM
       octopress-hooks (~> 2.0)
       rubypants-unicode
       titlecase
-    octopress-hooks (2.2.2)
+    octopress-hooks (2.2.1)
       jekyll (~> 2.0)
     octopress-include-tag (1.0.0)
       jekyll (~> 2.0)
@@ -117,24 +111,24 @@ GEM
     parslet (1.5.0)
       blankslate (~> 2.0)
     posix-spawn (0.3.9)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
       slop (~> 3.4)
-    pry-byebug (2.0.0)
-      byebug (~> 3.4)
-      pry (~> 0.10)
+    pry-debugger (0.2.2)
+      debugger (~> 1.3)
+      pry (~> 0.9.10)
     pygments.rb (0.6.0)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    redcarpet (3.2.2)
+    redcarpet (3.2.1)
     rubypants-unicode (0.2.5)
     safe_yaml (1.0.4)
     sass (3.4.9)
-    slop (3.6.0)
+    slop (3.5.0)
     timers (4.0.1)
       hitimes
     titlecase (0.1.1)
@@ -149,10 +143,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jekyll!
   octopress!
-  octopress-date-format
   octopress-docs!
   octopress-ink!
   octopress-solarized!
-  pry-byebug
+  pry-debugger

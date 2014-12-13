@@ -1,7 +1,7 @@
 module Octopress
   module Docs
     class Page < Jekyll::Page
-      include Jekyll::Convertible
+      include Docs::Convertible
 
       # Purpose: Configs can override a page's permalink
       #
@@ -17,7 +17,7 @@ module Octopress
       end
 
       def hooks
-        Octopress.site.page_hooks
+        Octopress.site.page_hooks || []
       end
 
       def destination(dest)
