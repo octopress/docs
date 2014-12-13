@@ -19,7 +19,12 @@ module Octopress
       end
 
       def self.serve_docs(options)
+        # Tell the world, we're serving the docs site
+        #
+        ENV['OCTOPRESS_DOCS'] = 'true'
+
         # Activate dependencies for serving docs.
+        #
         require "octopress-hooks"
         require "octopress-escape-code"
         require "octopress-docs/jekyll/convertible"
@@ -28,12 +33,12 @@ module Octopress
         require "octopress-docs/hooks"
         require "octopress-docs/liquid_filters"
 
-        ENV['OCTOPRESS_DOCS'] = 'true'
-        options = init_octopress_docs(options)
-        options["port"] = '4444'
-        options["serving"] = true
+        # Look at the local site and require all of its plugins
+        # Ensuring their documentation is loaded into the docs site
+        #
         Octopress.site({'config'=>options['config']}).plugin_manager.conscientious_require
-        options = Octopress.site.config.merge(options)
+
+        options = init_octopress_docs(options)
         
         Dir.chdir(options['source']) do
           Jekyll::Commands::Build.process(options)
@@ -41,27 +46,17 @@ module Octopress
         end
       end
 
+      # Prepare Jekyll to serve up the site from this gem
+      #
       def self.init_octopress_docs(options)
-        options['source'] = site_dir
-        options['destination'] = File.join(site_dir, '_site')
-        options
-      end
+        options['source']      = Docs.gem_dir('site')
+        options['destination'] = File.join(options['source'], '_site')
+        options['port']        = '4444'
+        options['serving']     = true
 
-      def self.init_jekyll_docs(options)
-        options.delete('jekyll')
-
-        # Find local Jekyll gem path
+        # Merge with Jekyll defaults and load in site's _config.yml
         #
-        spec = Gem::Specification.find_by_name("jekyll")
-        gem_path = spec.gem_dir
-
-        options['source'] = "#{gem_path}/site",
-        options['destination'] = "#{gem_path}/site/_site"
-        options
-      end
-
-      def self.site_dir
-        Docs.gem_dir('site')
+        Jekyll.configuration(options)
       end
     end
   end

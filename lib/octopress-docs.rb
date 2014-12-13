@@ -35,7 +35,9 @@ module Octopress
         }
       }
 
-      docs = docs.sort_by { |k,v| v['name'] }
+      # Sort docs alphabetically by name
+      #
+      docs = Hash[docs.sort_by { |k,v| v['name'] }]
 
       { 'plugin_docs' => docs }
     end

@@ -94,9 +94,6 @@ GEM
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
     method_source (0.8.2)
-    octopress-date-format (3.0.1)
-      jekyll (~> 2.0)
-      octopress-hooks (~> 2.0)
     octopress-deploy (1.0.0)
       colorator
       octopress-docs
@@ -151,7 +148,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll!
   octopress!
-  octopress-date-format
   octopress-docs!
   octopress-ink!
   octopress-solarized!
