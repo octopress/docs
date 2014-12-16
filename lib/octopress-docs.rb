@@ -16,37 +16,37 @@ module Octopress
       File.expand_path(File.join(File.dirname(__FILE__), '../', dir))
     end
 
-    # Get all doc pages
-    #
     def self.pages
-      @docs.values.flatten.map {|d| d.page }
+      doc_pages.values.flatten
     end
 
-    def self.pages_info
-      docs = @docs.clone
-      docs.each { |slug, pages|
-        docs[slug] = {
-          "name" => pages.first.plugin_name,
-          "docs" => plugin_docs(pages),
-          "url"  => pages.first.base_url,
-          "type"  => pages.first.plugin_type,
-          "description"  => pages.first.description,
-          "source_url"  => pages.first.source_url
-        }
-      }
+    def self.doc_pages
+      if !@pages
+        @pages = @docs.dup
+        @pages.each do |slug, docs|
 
-      # Sort docs alphabetically by name
-      #
-      docs = Hash[docs.sort_by { |k,v| v['name'] }]
+          # Convert docs to pages
+          #
+          docs.map! { |doc| doc.page }
 
-      { 'plugin_docs' => docs }
+          # Inject docs links from other docs pages
+          #
+          docs.map! do |doc|
+            doc.data = doc.data.merge({
+              'docs' => plugin_page_links(@pages[slug])
+            })
+            doc
+          end
+        end
+      end
+      @pages
     end
 
-    def self.plugin_docs(pages)
-      pages.clone.map { |d|
-        page = d.page
-        title   = page.data['link_title'] || page.data['title'] || page.basename
-        url = File.join('/', d.base_url, page.url.sub('index.html', ''))
+    def self.plugin_page_links(pages)
+      pages.clone.map { |page|
+        data = page.data
+        title   = data['link_title'] || data['title'] || page.basename
+        url = File.join('/', data['plugin']['url'], page.url.sub('index.html', ''))
 
         {
           'title' => title,
@@ -56,6 +56,29 @@ module Octopress
         # Sort by depth of url
         i['url'].split('/').size
       }
+    end
+    
+
+    # Return a hash of plugin docs information
+    # for Jekyll site payload
+    #
+    def self.pages_info
+      docs = {}
+
+      # Retrieve plugin info from docs
+      #
+      doc_pages.each do |slug, pages|
+        data = pages.first.data
+        docs[slug] = data['plugin'].merge({
+          'pages' => data['docs']
+        })
+      end
+
+      # Sort docs alphabetically by name
+      #
+      docs = Hash[docs.sort_by { |k,v| v['name'] }]
+
+      @pages_info = { 'plugin_docs' => docs }
     end
 
     def self.add_plugin_docs(plugin)
@@ -82,10 +105,12 @@ module Octopress
     end
 
     def self.default_options(options)
+      options[:docs] ||= %w{readme changelog}
       options[:type] ||= 'plugin'
       options[:slug] = slug(options)
       options[:base_url] = base_url(options)
       options[:path] ||= '.'
+      options[:docs_path] ||= File.join(options[:path], 'assets', 'docs')
       options
     end
 
@@ -102,16 +127,22 @@ module Octopress
       end
     end
 
+    # Add doc pages for a plugin
+    # 
+    # Input: options describing a plugin
+    #
+    # Output: array of docs
+    #
     def self.add(options)
-      options[:docs] ||= %w{readme changelog}
       options = default_options(options)
-      options[:docs_path] ||= File.join(options[:path], 'assets', 'docs')
       docs = []
       docs.concat add_asset_docs(options)
       docs.concat add_root_docs(options, docs)
       docs.compact! 
     end
 
+    # Add pages from the root of a gem (README, CHANGELOG, etc)
+    #
     def self.add_root_docs(options, asset_docs=[])
       root_docs = []
       options[:docs].each do |doc|
@@ -129,12 +160,15 @@ module Octopress
     end
 
     # Add a single root doc
+    #
     def self.add_root_doc(filename, options)
       if file = select_first(options[:path], filename)
         add_doc_page(options.merge({file: file}))
       end
     end
 
+    # Register a new doc page for a plugin
+    #
     def self.add_doc_page(options)
       page = Docs::Doc.new(options)
       @docs[options[:slug]] ||= []
@@ -144,9 +178,11 @@ module Octopress
 
     private
 
+    # Add doc pages from /asset/docs
+    #
     def self.add_asset_docs(options)
       docs = []
-      find_doc_pages(options).each do |doc|
+      find_doc_pages(options[:docs_path]).each do |doc|
         unless doc =~ /^_/
           opts = options.merge({file: doc, path: options[:docs_path]})   
           docs << add_doc_page(opts)
@@ -155,16 +191,18 @@ module Octopress
       docs
     end
 
-    def self.find_doc_pages(options)
-      full_dir = options[:docs_path]
-      glob_assets(full_dir).map do |file|
-        file.sub(full_dir+'/', '')
-      end
-    end
+    # Find all files in a directory recursively
+    #
+    def self.find_doc_pages(dir)
 
-    def self.glob_assets(dir)
       return [] unless Dir.exist? dir
-      Find.find(dir).to_a.reject {|f| File.directory? f }
+
+      Find.find(dir).to_a.reject do |f| 
+        File.directory? f 
+      end.map do |f|
+        # truncate file to relative path
+        f.sub(dir+'/', '')
+      end
     end
 
     def self.select_first(dir, match)
@@ -174,7 +212,6 @@ module Octopress
 end
 
 # Add documentation for this plugin
-
 Octopress::Docs.add({
   name:        "Octopress Docs",
   description: "The fancy local documentation viewer.",

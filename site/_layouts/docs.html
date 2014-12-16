@@ -5,7 +5,7 @@ layout: default
 
 {{ content }}
 
-{% assign doc_pages = plugin_docs[page.plugin.slug].docs %}
+{% assign doc_pages = page.docs %}
 {% if doc_pages.size > 1 %}
 <nav class='plugin-nav' role='navigation'>
 {% for doc in doc_pages %}

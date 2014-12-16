@@ -9,7 +9,7 @@ PATH
 PATH
   remote: ../../cli
   specs:
-    octopress (3.0.0.rc.21)
+    octopress (3.0.0.rc.22)
       jekyll (~> 2.0)
       mercenary (~> 0.3.2)
       octopress-deploy
