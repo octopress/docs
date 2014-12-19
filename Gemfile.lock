@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    octopress-docs (0.0.11)
+    octopress-docs (0.0.13)
       jekyll (~> 2.0)
       octopress-escape-code (~> 2.0)
       octopress-hooks (~> 2.0)
@@ -72,7 +72,7 @@ GEM
       octopress-docs
     octopress-escape-code (2.0.0)
       octopress-hooks (~> 2.0)
-    octopress-hooks (2.2.2)
+    octopress-hooks (2.2.3)
       jekyll (~> 2.0)
     parslet (1.5.0)
       blankslate (~> 2.0)
