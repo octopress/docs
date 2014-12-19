@@ -38,6 +38,8 @@ module Octopress
         return @page if @page
         @page = Octopress::Docs::Page.new(Octopress.site, @path, page_dir, file, {'path'=>@base_url})
         @page.data['layout'] = 'docs'
+        @page.data['escape_code'] = true
+
         @page.data['plugin'] = { 
           'name'        => @plugin_name, 
           'slug'        => @plugin_slug,

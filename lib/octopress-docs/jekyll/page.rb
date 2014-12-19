@@ -16,10 +16,6 @@ module Octopress
         post_init if respond_to?(:post_init)
       end
 
-      def hooks
-        Octopress.site.page_hooks || []
-      end
-
       def destination(dest)
         unless @dest
           if @config['path']
@@ -31,7 +27,7 @@ module Octopress
       end
 
       def relative_asset_path
-        site_source = Pathname.new Octopress.site.source
+        site_source = Pathname.new Docs.site.source
         page_source = Pathname.new @base
         page_source.relative_path_from(site_source).to_s
       end

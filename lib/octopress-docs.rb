@@ -23,6 +23,7 @@ module Octopress
     def self.doc_pages
       if !@pages
         @pages = @docs.dup
+
         @pages.each do |slug, docs|
 
           # Convert docs to pages
@@ -207,6 +208,21 @@ module Octopress
 
     def self.select_first(dir, match)
       Dir.new(dir).select { |f| f =~/#{match}/i}.first
+    end
+
+    def self.site(options={})
+      @site ||= Octopress.site(site_options.merge(options))
+    end
+
+    def self.site_options
+      source = Docs.gem_dir('site')
+      {
+        'source'      => source,
+        'destination' => File.join(source, '/_site'),
+        'layouts'     => File.join(source, '/_layouts'),
+        'port'        => '4444',
+        'serving'     =>  true,
+      }
     end
   end
 end

@@ -3,7 +3,7 @@ PATH
   specs:
     octopress-docs (0.0.11)
       jekyll (~> 2.0)
-      octopress-escape-code (~> 1.0)
+      octopress-escape-code (~> 2.0)
       octopress-hooks (~> 2.0)
 
 GEM
@@ -55,13 +55,13 @@ GEM
       listen (~> 2.7)
     kramdown (1.5.0)
     liquid (2.6.1)
-    listen (2.8.3)
+    listen (2.8.4)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
     method_source (0.8.2)
-    octopress (3.0.0.rc.20)
+    octopress (3.0.0.rc.23)
       jekyll (~> 2.0)
       mercenary (~> 0.3.2)
       octopress-deploy
@@ -70,7 +70,7 @@ GEM
     octopress-deploy (1.0.0)
       colorator
       octopress-docs
-    octopress-escape-code (1.0.3)
+    octopress-escape-code (2.0.0)
       octopress-hooks (~> 2.0)
     octopress-hooks (2.2.2)
       jekyll (~> 2.0)

@@ -1,14 +1,9 @@
 module Octopress
   module Docs
     class DocsSiteHook < Octopress::Hooks::Site
-      def post_init(site)
-        if ENV['OCTOPRESS_DOCS'] && Octopress.site.nil?
-          Octopress.site = site
-        end
-      end
-
       def post_read(site)
         if ENV['OCTOPRESS_DOCS']
+          Octopress.site = site
           site.pages.concat Octopress::Docs.pages
         end
       end
