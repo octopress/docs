@@ -215,7 +215,7 @@ module Octopress
     end
 
     def self.site_options
-      source = Docs.gem_dir('site')
+      source = Docs.gem_dir('local')
       {
         'source'      => source,
         'destination' => File.join(source, '/_site'),

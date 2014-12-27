@@ -1,7 +1,0 @@
-source 'https://rubygems.org'
-
-gem "octopress-docs", path: "../"
-gem "octopress", path: "../../cli"
-gem "octopress-ink", path: "../../ink"
-gem "octopress-solarized", path: "../../solarized"
-gem "pry-byebug"
