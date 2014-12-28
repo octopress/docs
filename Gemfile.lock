@@ -16,7 +16,7 @@ GEM
       slop (~> 3.6)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    classifier-reborn (2.0.2)
+    classifier-reborn (2.0.3)
       fast-stemmer (~> 1.0)
     coderay (1.1.0)
     coffee-script (2.3.0)
@@ -30,7 +30,7 @@ GEM
     fast-stemmer (1.0.2)
     ffi (1.9.6)
     hitimes (1.2.2)
-    jekyll (2.5.2)
+    jekyll (2.5.3)
       classifier-reborn (~> 2.0)
       colorator (~> 0.1)
       jekyll-coffeescript (~> 1.0)
@@ -67,10 +67,10 @@ GEM
       octopress-deploy
       octopress-docs
       titlecase
-    octopress-deploy (1.0.0)
+    octopress-deploy (1.0.1)
       colorator
       octopress-docs
-    octopress-escape-code (2.0.0)
+    octopress-escape-code (2.0.1)
       octopress-hooks (~> 2.0)
     octopress-hooks (2.2.3)
       jekyll (~> 2.0)
