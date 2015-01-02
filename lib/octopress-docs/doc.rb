@@ -35,24 +35,25 @@ module Octopress
       end
 
       def page
-        return @page if @page
-        @page = Octopress::Docs::Page.new(Octopress.site, @path, page_dir, file, {'path'=>@base_url})
-        @page.data['layout'] = 'docs'
-        @page.data['escape_code'] = true
+        @page ||= begin
+          p = Octopress::Docs::Page.new(Octopress.site, @path, page_dir, file, {'path'=>@base_url})
+          p.data['layout'] = 'docs'
+          p.data['escape_code'] = true
 
-        @page.data['plugin'] = { 
-          'name'        => @plugin_name, 
-          'slug'        => @plugin_slug,
-          'type'        => @plugin_type,
-          'source_url'  => @source_url,
-          'description' => @description,
-          'url'         => @base_url
-        }
+          p.data['plugin'] = { 
+            'name'        => @plugin_name, 
+            'slug'        => @plugin_slug,
+            'type'        => @plugin_type,
+            'source_url'  => @source_url,
+            'description' => @description,
+            'url'         => @base_url
+          }
 
-        @page.data['dir'] = doc_dir
-        @page.data = @data.merge(@page.data)
-        @page.data.merge!(comment_yaml(@page.content))
-        @page
+          p.data['dir'] = doc_dir
+          p.data = @data.merge(p.data)
+          p.data.merge!(comment_yaml(p.content))
+          p
+        end
       end
 
       private

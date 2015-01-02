@@ -92,17 +92,19 @@ module Octopress
     end
 
     def self.plugin_options(plugin)
-      {
+      options = {
         name: plugin.name,
         slug: plugin.slug,
         type: plugin.type,
-        base_url: plugin.docs_url,
         path: plugin.path,
         source_url: plugin.source_url,
         website: plugin.website,
         docs_path: File.join(plugin.assets_path, 'docs'),
         docs: %w{readme changelog}
       }
+
+      options[:base_url] = base_url(options)
+      options
     end
 
     def self.default_options(options)
@@ -122,9 +124,13 @@ module Octopress
     
     def self.base_url(options)
       options[:base_url] || if options[:type] == 'theme'
-        File.join('docs', 'theme')
+        'theme'
       else
-        File.join('docs', 'plugins', options[:slug])
+        if options[:source_url] =~ /github\.com\/(octopress|imathis)/
+          File.join('octopress', options[:slug].sub(/octopress-/,''))
+        else
+          File.join('plugins', options[:slug])
+        end
       end
     end
 

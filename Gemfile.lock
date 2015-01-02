@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    octopress-docs (0.0.13)
+    octopress-docs (0.0.14)
       jekyll (~> 2.0)
       octopress-escape-code (~> 2.0)
       octopress-hooks (~> 2.0)
@@ -70,7 +70,7 @@ GEM
     octopress-deploy (1.0.1)
       colorator
       octopress-docs
-    octopress-escape-code (2.0.1)
+    octopress-escape-code (2.0.2)
       octopress-hooks (~> 2.0)
     octopress-hooks (2.2.3)
       jekyll (~> 2.0)
