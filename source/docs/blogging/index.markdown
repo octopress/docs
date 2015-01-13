@@ -31,10 +31,10 @@ rake new_post["Zombie Ninjas Attack: A survivor's retrospective"]
 # Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown
 ```
 
-The filename will determine your url. With the default [permalink settings](https://github.com/mojombo/jekyll/wiki/Permalinks) the url would be something like
+The filename will determine your url. With the default [permalink settings](http://jekyllrb.com/docs/permalinks/) the url would be something like
 `http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html`.
 
-Open a post in a text editor and you'll see a block of [yaml front matter](https://github.com/mojombo/jekyll/wiki/yaml-front-matter)
+Open a post in a text editor and you'll see a block of [yaml front matter](http://jekyllrb.com/docs/frontmatter/)
 which tells Jekyll how to processes posts and pages.
 
 ``` yaml
