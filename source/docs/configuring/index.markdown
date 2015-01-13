@@ -45,7 +45,7 @@ In the `_config.yml` there are three sections for configuring your Octopress Blo
 company or project, and add author metadata to posts and pages to give proper attribution for those works.
 
 ### Jekyll & Plugins
-These configurations are used by Jekyll and Plugins. If you're not familiar with Jekyll, you should probably have a look at the [configuration docs](https://github.com/mojombo/jekyll/wiki/Configuration) which lists more options that aren't covered here.
+These configurations are used by Jekyll and Plugins. If you're not familiar with Jekyll, you should probably have a look at the [configuration docs](http://jekyllrb.com/docs/configuration/) which lists more options that aren't covered here.
 
 ``` yaml
     root:               # Mapping for relative urls (default: /)
