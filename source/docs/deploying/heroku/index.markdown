@@ -30,7 +30,7 @@ This will create a new Heroku app for you to deploy to and add a git remote name
 git config branch.master.remote heroku
 ```
 
-Edit the `.gitignore` in the root of your repository and remove `public`. This will let you add generated content for deploying it to Heroku.
+Edit the `.gitignore` in the root of your repository by removing `public` and `Gemfile.lock`. This will let you add generated content for deploying it to Heroku.
 
 ```sh
 rake generate
