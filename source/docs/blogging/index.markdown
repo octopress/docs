@@ -49,7 +49,7 @@ categories:
 ---
 ```
 
-Here you can turn comments off and or categories to your post. If you are working on a multi-author blog, you can add `author: Your Name` to the
+Here you can turn comments off or add categories to your post. If you are working on a multi-author blog, you can add `author: Your Name` to the
 metadata for proper attribution on a post. If you are working on a draft, you can add `published: false` to prevent it from being posted when you generate your blog. If you want to publish a [linklog](/docs/blogging/linklog) style post (blog entries point to external urls), simply add an external-url to your post.
 
 You can add a single category or multiple categories like this.
