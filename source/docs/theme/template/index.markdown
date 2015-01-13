@@ -30,6 +30,12 @@ Next you'll want to update your `Rakefile` to be sure your new blog index is pre
     blog_index_dir = 'source/blog'
 ```
 
+Then you may also need to update `_config.yml` to specify the pagination path in order to generate the list of blog posts on the index page.
+
+``` ruby
+    paginate_path: "blog/posts/:num"
+```
+
 Remember to update the main navigation for your site, since currently the blog link points to `/`. Skip down to the section on [changing navigation](#changing_navigation), add a 'home' link and update the 'blog' link to point to `/blog/`.
 
 Finally, `source/index.html` can become the landing page of your wildest dreams.
