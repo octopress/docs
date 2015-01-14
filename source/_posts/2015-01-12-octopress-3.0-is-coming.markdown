@@ -21,11 +21,11 @@ I've spent the two and a half years working on the next version of Octopress. Tw
 
 ### What's coming?
 
-This release is a full rewrite. Octopress as it is now will be replaced by a selection of gems, each semantically versioned with is own documentation and tests. Of the 30 or so gems I’ve written, some are replacements for plugins that were originally integrated into Octopress and others are completely new. I will be working on a migration guide for current Octopress users, but each plugin can be used on any Jekyll site. **There will no longer be a division between Octopress and Jekyll.**
+This release is a full rewrite. Octopress as it is now will be replaced by a selection of gems, each semantically versioned with is own documentation and tests. Of the thirty gems I’ve written for this release, some are replacements for plugins that were originally integrated into Octopress and others are completely new. I will be working on a migration guide for current Octopress users, but each plugin can be used on any Jekyll site. **There will no longer be a division between Octopress and Jekyll.**
 
 Here’s a brief overview of the core components of the new Octopress.
 
-**The Octopress CLI** replaces the old Rakefile and has some new tricks too. With `octopress` and the `octopress-deploy` gem you can:
+**The Octopress CLI** replaces the old Rakefile and has some new tricks too. With [octopress](https://github.com/octopress/octopress) and the [octopress](https://github.com/octopress/deploy) gem you can:
 
 - Quickly create new pages, posts, drafts, and collections.
 - Master your drafts workflow with the `publish` and `unpublish` commands.
@@ -35,7 +35,7 @@ Here’s a brief overview of the core components of the new Octopress.
 
 That last one is actually pretty neat. Each Octopress gem integrates its documentation with the Octopress CLI so when you run `octopress docs` from your site, you’ll see the documentation for the exact version of every plugin your site is using. Switch to a different site with different plugins and you’ll see a different docs site. Third-party gem-based plugin can easily integrate their documentation too. I’m even using this documentation system to build the new Octopress website.
 
-**Octopress Ink** is a framework I’ve built for helping plugin authors rapidly build powerful plugins and themes for Jekyll sites. It has some crazy cool features.
+[Octopress Ink](https://github.com/octopress/ink) is a framework I’ve built for helping plugin authors rapidly build powerful plugins and themes for Jekyll sites. It has some crazy cool features.
 
 - Plugins are easily installed and removed and they only affect the build. A users source is left alone.
 - Add layouts, includes, pages and files right from the gem, for example: <code>&#123;% include twitter:feed %&#125;</code>.
@@ -45,8 +45,28 @@ That last one is actually pretty neat. Each Octopress gem integrates its documen
 - Each plugin has access to it’s own name-spaced configurations. (No more _config.yml pollution).
 - The command `octopress ink new <PLUGIN_NAME>` will generate a gem-based plugin scaffold that makes it easy to get started building powerful plugins.
 
-In order to build all of this, I created a simple static-site test suite called [Clash](https://github.com/imathis/clash). If you’re building Jekyll plugins, check it out. I’d love to know what you think.
+As I said before, there are over thirty gems I’ve build for this release. In order to remain sane while building so many plugins, I created some new developer tools as well. If you are building Jekyll plugins or even just working with advanced templates, this may be a big help.
 
-To demonstrate many of the features of Octopress Ink and set a pattern for how Jekyll themes should be created, I’m working on a new theme called “Octopress Genesis”. Once that’s done, I’ll use it for the new docs site and launch this beast.
+[Clash](https://github.com/imathis/clash) is a simple static-site test suite. It can build Jekyll sites with different configurations and compares output with a simple but powerful diff system.
 
-There’s a lot more, and you can browse the [Octopress organization on GitHub](https://github.com/octopress) if you’re curious, but for now, thanks to everyone for your encouragement, kindness, and patience as I figure out what I’m doing in public.
+[Octopress Debugger](https://github.com/octopress/debugger) lets you add a Liquid tag <code>&#123;% debug %&#125;</code>, to your sites and interact with the `site`, `page` and, `scopes` instances in an interactive ruby console. This makes it easy to see how variables are set, or even step through a for loop. It’s even just a cool way to see what Jekyll is doing under the hood as it builds your site.
+
+Finally, I’m working on a new theme. It’s called “Octopress Genesis”, and it will demonstrate many of the features of Octopress Ink and set a pattern for how Jekyll themes should be created. Once that’s done, I’ll use it for the new docs site and launch this beast.
+
+There’s a lot more, and you can browse the [Octopress organization on GitHub](https://github.com/octopress) if you’re curious.
+
+### The release plan
+
+For the release, I plan to do the following:
+
+1. Finish Octopress Genesis
+2. Write a migration guide
+3. Move `imathis/octopress` over to `octopress/octopress`
+4. Release the new docs site
+5. Release Octopress as 3.0 and Octopress Ink as 1.0
+
+After the release, I will begin closing out issues and pull requests that can be resolved by replacing old plugins with gems. Working on the current Octopress codebase is very challenging and I intend to work on updating it as little as possible in the future.
+
+Thanks to everyone for your encouragement, kindness, and patience as I figure out what I’m doing in public. I can’t wait to ship this and I look forward to a bright future with a better Octopress.
+
+— Brandon Mathis
