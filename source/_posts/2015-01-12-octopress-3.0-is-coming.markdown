@@ -61,11 +61,12 @@ For the release, I plan to do the following:
 
 1. Finish Octopress Genesis
 2. Write a migration guide
-3. Move `imathis/octopress` over to `octopress/octopress`
-4. Release the new docs site
-5. Release Octopress as 3.0 and Octopress Ink as 1.0
+3. Move the `master` branch to the `legacy` branch for maintenance releases and modify rake tasks accordingly.
+4. Move `imathis/octopress` to the Octopress org on GitHub.
+5. Release the new docs site.
+6. Release Octopress as 3.0 and Octopress Ink as 1.0
 
-After the release, I will begin closing out issues and pull requests that can be resolved by replacing old plugins with gems. Working on the current Octopress codebase is very challenging and I intend to work on updating it as little as possible in the future.
+After the release, I will begin closing out issues and pull requests that can be resolved by replacing old plugins with gems. Anyone who wants to help with that effort will earn a special place in my heart. Working on the “legacy codebase” is very challenging and I intend to avoid anything but critical updates in the future.
 
 Thanks to everyone for your encouragement, kindness, and patience as I figure out what I’m doing in public. I can’t wait to ship this and I look forward to a bright future with a better Octopress.
 
