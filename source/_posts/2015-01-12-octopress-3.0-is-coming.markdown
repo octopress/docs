@@ -21,7 +21,7 @@ I've spent the two and a half years working on the next version of Octopress. Tw
 
 ### What's coming?
 
-This release is a full rewrite. Octopress as it is now will be replaced by a selection of gems, each semantically versioned with is own documentation and tests. Of the thirty gems I’ve written for this release, some are replacements for plugins that were originally integrated into Octopress and others are completely new. I will be working on a migration guide for current Octopress users, but each plugin can be used on any Jekyll site. **There will no longer be a division between Octopress and Jekyll.**
+This release is a full rewrite. Octopress as it is now will be replaced by a selection of gems, each semantically versioned with is own documentation and tests. Of the gems I’ve written for this release, some are replacements for plugins that were originally integrated into Octopress and others are completely new. I will be working on a migration guide for current Octopress users, but each plugin can be used on any Jekyll site. **There will no longer be a division between Octopress and Jekyll.**
 
 Here’s a brief overview of the core components of the new Octopress.
 
@@ -45,15 +45,15 @@ That last one is actually pretty neat. Each Octopress gem integrates its documen
 - Each plugin has access to it’s own name-spaced configurations. (No more _config.yml pollution).
 - The command `octopress ink new <PLUGIN_NAME>` will generate a gem-based plugin scaffold that makes it easy to get started building powerful plugins.
 
-As I said before, there are over thirty gems I’ve build for this release. In order to remain sane while building so many plugins, I created some new developer tools as well. If you are building Jekyll plugins or even just working with advanced templates, this may be a big help.
+In order to remain sane working on all this, I created some new developer tools as well. If you are building Jekyll plugins or even just working with advanced templates, these should be a big help.
 
-[Clash](https://github.com/imathis/clash) is a simple static-site test suite. It can build Jekyll sites with different configurations and compares output with a simple but powerful diff system.
+[Clash](https://github.com/imathis/clash) is a simple static-site test suite. It can build Jekyll sites with different configurations and it compares output with a simple but powerful diff system.
 
 [Octopress Debugger](https://github.com/octopress/debugger) lets you add a Liquid tag <code>&#123;% debug %&#125;</code>, to your sites and interact with the `site`, `page` and, `scopes` instances in an interactive ruby console. This makes it easy to see how variables are set, or even step through a for loop. It’s even just a cool way to see what Jekyll is doing under the hood as it builds your site.
 
 Finally, I’m working on a new theme. It’s called “Octopress Genesis”, and it will demonstrate many of the features of Octopress Ink and set a pattern for how Jekyll themes should be created. Once that’s done, I’ll use it for the new docs site and launch this beast.
 
-There’s a lot more, and you can browse the [Octopress organization on GitHub](https://github.com/octopress) if you’re curious.
+There’s a lot more — around 30 gems at this point — and if you’re curious, you can browse the [Octopress organization on GitHub](https://github.com/octopress). Quite a few people have been using these plugins already and their issues and pull-requests have been a big help.
 
 ### The release plan
 
@@ -68,6 +68,6 @@ For the release, I plan to do the following:
 
 After the release, I will begin closing out issues and pull requests that can be resolved by replacing old plugins with gems. Anyone who wants to help with that effort will earn a special place in my heart. Working on the “legacy codebase” is very challenging and I intend to avoid anything but critical updates in the future.
 
-Thanks to everyone for your encouragement, kindness, and patience as I figure out what I’m doing in public. I can’t wait to ship this and I look forward to a bright future with a better Octopress.
+Thanks to everyone for your help, encouragement, and patience as I figure out what I’m doing in public. I can’t wait to ship this and I look forward to a bright future with a better Octopress.
 
 — Brandon Mathis
